@@ -13,7 +13,7 @@ import InfiniteCardSlider from "../Four/InfiniteCardSlider";
 const Three = () => {
   return (
     <>
-      <div className="px-4 md:mx-32 md:my-16   md:p-14  bg-secondary">
+      <div className="px-4 md:mx-32 md:my-16 md:p-14    bg-secondary">
         <div className="flex-1 md:flex  gap-8">
           <div className="space-y-5 text-white">
             <h1 className="text-2xl md:text-4xl font-bold">
@@ -48,7 +48,7 @@ const Three = () => {
             "Explore all of our courses and pick your suitable ones to enroll and start learning with us!"
           }
         />
-        <div className="">
+        <div className="my-24">
           <InfiniteCardSlider />
         </div>
       </div>

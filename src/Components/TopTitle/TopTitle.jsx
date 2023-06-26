@@ -1,7 +1,7 @@
 // eslint-disable-next-line react/prop-types
 const TopTitle = ({ title, subTitle, btn }) => {
   return (
-    <div className="flex justify-between pb-14">
+    <div className="flex justify-between ">
       <div className="text-white space-y-4">
         <h1 className="text-3xl md:text-4xl font-bold">{title}</h1>
         <p className="text-xs md:text-sm">{subTitle}</p>

@@ -1,4 +1,4 @@
-import book from "../../../assets/icons/books.png";
+import book from "../../../../assets/icons/books.png";
 import TwoCompo from "./TwoCompo";
 
 const Two = () => {

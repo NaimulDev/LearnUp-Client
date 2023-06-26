@@ -1,9 +1,10 @@
 import Banner from "../Banner/Banner";
-import One from "../One/One";
-import Three from "../Sections/Three/Three";
+import One from "../Sections/One/One";
+import Sections from "../Sections/Sections";
+import Two from "../Sections/Two/Two";
+
 import TopCategories from "../TopCategories/TopCategories";
 import TopCourses from "../TopCourses/TopCourses";
-import Two from "../Two/Two";
 
 const Home = () => {
   return (
@@ -13,7 +14,7 @@ const Home = () => {
       <TopCategories />
       <TopCourses />
       <Two />
-      <Three />
+      <Sections />
     </div>
   );
 };

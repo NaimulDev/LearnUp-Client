@@ -3,7 +3,7 @@ import React from "react";
 import { FaQuoteRight } from "react-icons/fa";
 const Card = ({ img, name, profation }) => {
   return (
-    <div>
+    <div className="bg-secondary">
       <h3 className="text-white">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quaerat
         consequatur incidunt quos voluptatem atque sunt tempora distinctio

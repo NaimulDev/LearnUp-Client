@@ -1,13 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 // import { CartContext } from "../App";
 // import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 import { FaSearch } from "react-icons/fa";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const NavBar = () => {
   // const [cart, setCart] = useContext(CartContext || []);
+  const { user, logOut } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch((error) => console.log(error));
+  };
   return (
     <div className="bg-black text-white px-4 py-5 mx-auto sm:max-w-xl md:max-w-full  md:px-24 lg:px-11">
       <div className="relative flex items-center justify-between">
@@ -93,16 +99,7 @@ const NavBar = () => {
               Shop
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/blog"
-              aria-label="blog"
-              title="blog"
-              className={({ isActive }) => (isActive ? "active" : "default")}
-            >
-              Blog
-            </NavLink>
-          </li>
+
           <li>
             <NavLink
               to="/contact"
@@ -113,52 +110,43 @@ const NavBar = () => {
               Contact Us
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <button className="bg-red py-2 px-8">Sign Up</button>
-          </li>
-          {/* <li className="flex items-center">
-              {user ? (
-                <>
-                  <NavLink
-                    id="nav"
-                    to="/dashboard "
-                    aria-label="Dashboard "
-                    title="Dashboard "
-                    className={({ isActive }) =>
-                      isActive ? "active" : "default"
-                    }
-                  >
-                    Dashboard
-                  </NavLink>
-                  <button id="nav" className="" onClick={handleLogOut}>
-                    Logout
-                  </button>
-                  <div className=" flex ml-28">
-                    <div className="avatar cursor-pointer">
-                      <div className="w-10 h-10 rounded-full  ring ring-primary ring-offset-base-100 ring-offset-2">
-                        <img
-                          src={user?.photoURL}
-                          referrerPolicy="no-referrer"
-                          alt="User Avatar"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </>
-              ) : (
+          </li> */}
+          <li className="flex items-center">
+            {user ? (
+              <>
                 <NavLink
                   id="nav"
-                  to="/login"
-                  aria-label="login"
-                  title="Login"
+                  to="/dashboard "
+                  aria-label="Dashboard "
+                  title="Dashboard "
                   className={({ isActive }) =>
                     isActive ? "active" : "default"
                   }
                 >
-                  Login
+                  Dashboard
                 </NavLink>
-              )}
-            </li> */}
+                <button
+                  id="nav"
+                  className="bg-red py-2 px-8 ml-5"
+                  onClick={handleLogOut}
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <NavLink
+                id="nav"
+                to="/signup"
+                aria-label="Signup"
+                title="Signup"
+                className={({ isActive }) => (isActive ? "active" : "default")}
+              >
+                <button className="bg-red py-2 px-8">Sign up</button>
+              </NavLink>
+            )}
+          </li>
         </ul>
         <div className="lg:hidden">
           <button

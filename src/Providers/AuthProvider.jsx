@@ -58,7 +58,7 @@ const AuthProvider = ({ children }) => {
       // get and set token
       if (currentUser) {
         axios
-          .post("https://pallikoodam-server.vercel.app/jwt", {
+          .post("https://learn-up-server.vercel.app/jwt", {
             email: currentUser.email,
           })
           .then((data) => {

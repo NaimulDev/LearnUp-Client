@@ -1,6 +1,6 @@
 const Courses = () => {
   return (
-    <div>
+    <div className="text-white">
       <h1>Comming Soon Instructor</h1>
     </div>
   );

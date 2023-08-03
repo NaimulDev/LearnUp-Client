@@ -89,7 +89,7 @@ const NavBar = () => {
               Instructors
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink
               to="/shop"
               aria-label="Shop"
@@ -98,7 +98,7 @@ const NavBar = () => {
             >
               Shop
             </NavLink>
-          </li>
+          </li> */}
 
           <li>
             <NavLink

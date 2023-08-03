@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home/Home";
-import Courses from "../Pages/Courses/Courses";
 import Instructors from "../Pages/Instructors/Instructors";
 import Signup from "../Pages/Signup/Signup";
 import Login from "../Pages/Login/Login";
@@ -19,6 +18,7 @@ import SelectedClass from "../Pages/DashboardPages/Panel/UserPanel/SelectedClass
 import UserPayHistory from "../Pages/DashboardPages/Panel/UserPanel/UserPayHistory/UserPayHistory";
 import Payment from "../Pages/DashboardPages/Shared/Payment/Payment";
 import AdminRoute from "./AdminRoute";
+import ClassesPages from "../Pages/ClassesPages/ClassesPages";
 
 export const router = createBrowserRouter([
   {
@@ -32,7 +32,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/courses",
-        element: <Courses />,
+        element: <ClassesPages />,
       },
       {
         path: "/instructors",

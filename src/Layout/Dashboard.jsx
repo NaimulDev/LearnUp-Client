@@ -12,12 +12,13 @@ import {
 } from "react-icons/fa";
 // import useAuth from "../hooks/useAuth";
 
-import { useAdmin, useInstractor } from "../hooks/useAdmin";
+// import { useAdmin, useInstractor } from "../hooks/useAdmin";
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import IsAdmin from "../Pages/DashboardPages/Shared/Sidebar/IsAdmin";
 import IsInstractors from "../Pages/DashboardPages/Shared/Sidebar/IsInstractors";
 import IsUser from "../Pages/DashboardPages/Shared/Sidebar/IsUser";
+import { useAdmin, useInstractor } from "../hooks/useAdmin";
 
 // import useCart from "../hooks/useCart";
 

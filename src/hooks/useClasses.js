@@ -14,7 +14,9 @@ export const useAllClasses = () => {
 
 // instructor Email
 export const instructorsFetch = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { user } = useAuth();
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { data: instructor = [], refetch } = useQuery({
     queryKey: ["myaddedclass", user?.email],
     queryFn: async () => {

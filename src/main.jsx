@@ -14,10 +14,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <AuthProvider>
       <HelmetProvider>
         <QueryClientProvider client={queryClient}>
-          <div>
+          <div className="cursor-default ">
           <AnimatedCursor
         innerSize={8}
-        outerSize={40}
+        outerSize={30}
         color="8,169,230"
         outerAlpha={0.5}
         innerScale={0.9}

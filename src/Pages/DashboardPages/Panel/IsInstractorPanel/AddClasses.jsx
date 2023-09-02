@@ -65,24 +65,29 @@ const AddClasses = () => {
         if (imgResponse.success) {
           const imgURL = imgResponse.data.display_url;
           const {
-            name,
+            courseTitle,
             insName,
             email,
             seats,
-            price,
+            oldPrice,
+            newPrice,
             category,
             classDetails,
             image,
           } = data;
           const newItem = {
-            name,
+            img: imgURL,
+            courseTitle,
             insName,
             email,
-            seats,
-            price: parseFloat(price),
             category,
+            seats,
+            rating: 4.5,
+            oldPrice: parseFloat(oldPrice),
+            newPrice: parseFloat(newPrice),
             classDetails,
-            image: imgURL,
+            lastUpdated: "2023-09-04",
+            duration: "5 hours 20 minutes",
             status: "pending",
           };
 
@@ -107,12 +112,12 @@ const AddClasses = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-control w-full mb-4">
             <label className="label">
-              <span className="label-text font-semibold">class Name*</span>
+              <span className="label-text font-semibold">Course Title</span>
             </label>
             <input
               type="text"
-              placeholder="Class Name"
-              {...register("name", { required: true, maxLength: 120 })}
+              placeholder="Course Title"
+              {...register("courseTitle", { required: true, maxLength: 120 })}
               className="input input-bordered w-full "
             />
           </div>
@@ -162,19 +167,34 @@ const AddClasses = () => {
                 className="select select-bordered"
               >
                 <option disabled>Pick One</option>
-                <option>Cricket</option>
-                <option>Footbal</option>
-                <option>Basket ball</option>
-                <option>Hokey</option>
+                <option>Development</option>
+                <option>Marketing</option>
+                <option>Arts & Crafts</option>
+                <option>Busniss</option>
+                <option>Leadership</option>
+                <option>Data Science</option>
+                <option>Lifestyle</option>
+                <option>Management</option>
               </select>
             </div>
             <div className="form-control w-full ml-4">
               <label className="label">
-                <span className="label-text font-semibold">Price*</span>
+                <span className="label-text font-semibold">oldPrice*</span>
               </label>
               <input
                 type="number"
-                {...register("price", { required: true })}
+                {...register("oldPrice", { required: true })}
+                placeholder="Type here"
+                className="input input-bordered w-full "
+              />
+            </div>
+            <div className="form-control w-full ml-4">
+              <label className="label">
+                <span className="label-text font-semibold">newPrice*</span>
+              </label>
+              <input
+                type="number"
+                {...register("newPrice", { required: true })}
                 placeholder="Type here"
                 className="input input-bordered w-full "
               />

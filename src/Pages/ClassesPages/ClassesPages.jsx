@@ -7,7 +7,7 @@ const ClassesPages = () => {
   const [classes, setClasses] = useState([]);
 
   useEffect(() => {
-    fetch("https://pallikoodam-server.vercel.app/class", {
+    fetch("https://learn-up-server.vercel.app/class", {
       headers: {
         authorization: `bearer ${token}`,
       },
@@ -20,13 +20,13 @@ const ClassesPages = () => {
         setClasses(approvedClasses);
       });
   }, []);
+  console.log(classes);
 
   return (
-    <div className="flex flex-wrap">
-      {classes &&
-        classes.map((classItem, idx) => {
-          return <ClassCart key={idx} classItem={classItem} />;
-        })}
+    <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 mx-4 md:mx-36 lg:mx-14">
+      {classes.map((classItem, idx) => (
+        <ClassCart key={idx} classItem={classItem} />
+      ))}
     </div>
   );
 };

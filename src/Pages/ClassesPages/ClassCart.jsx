@@ -1,14 +1,14 @@
+/* eslint-disable react/prop-types */
+
 import React, { useContext, useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import { AuthContext } from "../../Providers/AuthProvider";
 
-
 const token = localStorage.getItem("access-token");
 
 const ClassCart = ({ classItem }) => {
   const [isSelectButtonDisabled, setIsSelectButtonDisabled] = useState(false);
-
   const { user, loading } = useContext(AuthContext);
   const email = user?.email;
 
@@ -17,7 +17,7 @@ const ClassCart = ({ classItem }) => {
   const { data: fetchedUsers = [] } = useQuery(
     ["users"],
     async () => {
-      const res = await fetch(`https://pallikoodam-server.vercel.app/users/`, {
+      const res = await fetch(`https://learn-up-server.vercel.app/users/`, {
         headers: {
           authorization: `bearer ${token}`,
         },
@@ -44,8 +44,13 @@ const ClassCart = ({ classItem }) => {
     insName,
     seats,
     price,
-    image,
+    oldPrice,
+    newPrice,
+    img,
+    courseTitle,
     status,
+    rating,
+    lastUpdated,
     classDetails,
     enrolledStudents,
     adminFeedback,
@@ -58,7 +63,7 @@ const ClassCart = ({ classItem }) => {
     seats: seats,
     price: price,
     classDetails: classDetails,
-    imageURL: image,
+    imageURL: img,
     status: status,
     adminFeedback: adminFeedback,
     enrolledStudents: enrolledStudents,
@@ -78,7 +83,7 @@ const ClassCart = ({ classItem }) => {
       }).then((result) => {
         if (result.isConfirmed) {
           Swal.fire("Added!", "You have been added to the class.", "success");
-          fetch("https://pallikoodam-server.vercel.app/mySelectedClasses", {
+          fetch("https://learn-up-server.vercel.app/mySelectedClasses", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -103,21 +108,35 @@ const ClassCart = ({ classItem }) => {
 
   const cardClasses = admin || instructor || seats === 0 ? "bg-red-500" : "";
 
-  return (
-    <div className={`w-72 mx-4 mb-8  ${cardClasses}`}>
-      <div className="border border-gray-300 rounded-lg p-4">
-        <div className="mb-4">
-          <img src={image} alt="Course" className="h-40 w-full object-cover" />
-        </div>
-        <div className="text-white">
-          <h2 className="text-xl font-semibold mb-2">{name}</h2>
-          <p className="text-sm mb-1">Instructor: {insName}</p>
-          <p className="text-sm mb-1">Email: {classItem.email}</p>
-          <p className="text-sm mb-1">Available Seats: {seats}</p>
-          <p className="text-sm mb-1">Enrolled Students: {enrolledStudents}</p>
-          <p className="text-sm mb-1">Price: ${price}</p>
-          <p className="text-sm mb-1">Status: {status}</p>
+  // State to control the visibility of the hidden div
+  const [isHiddenDivVisible, setIsHiddenDivVisible] = useState(false);
 
+  return (
+    <div
+      className={`w-72 mx-auto mb-8 relative ${cardClasses}`}
+      onMouseEnter={() => setIsHiddenDivVisible(true)}
+      onMouseLeave={() => setIsHiddenDivVisible(false)}
+    >
+      <div className="text-white p-3">
+        <div>
+          <img
+            src={img}
+            alt=""
+            className="mb-2 w-full transition-transform transform hover:scale-105"
+          />
+        </div>
+        <h1 className="text-2xl font-bold">{courseTitle}</h1>
+        <h6>{name}</h6>
+        <p>{rating}</p>
+        <h2 className="text-2xl">
+          ${oldPrice} <span> ${newPrice}</span>
+        </h2>
+      </div>
+      {/* Hidden div that appears above the other cart layout on hover */}
+      {isHiddenDivVisible && (
+        <div className="absolute -right-72 top-0 p-3 w-72 bg-white border border-gray-300 z-10 opacity-100">
+          <h1 className="text-2xl font-bold">{courseTitle}</h1>
+          <h6>{lastUpdated}</h6>
           <button
             onClick={handleSelectButton}
             disabled={
@@ -125,10 +144,10 @@ const ClassCart = ({ classItem }) => {
             }
             className="bg-slate-500 text-white font-bold py-2 px-4 rounded"
           >
-            Select
+            Add to Cart
           </button>
         </div>
-      </div>
+      )}
     </div>
   );
 };

@@ -14,13 +14,13 @@ const TopCategories = () => {
         />
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <CategoriesCompo text={"Development"} img={i} />
-          <CategoriesCompo text={"Development"} img={i} />
-          <CategoriesCompo text={"Development"} img={i} />
-          <CategoriesCompo text={"Development"} img={i} />
-          <CategoriesCompo text={"Development"} img={i} />
-          <CategoriesCompo text={"Development"} img={i} />
-          <CategoriesCompo text={"Development"} img={i} />
-          <CategoriesCompo text={"Development"} img={i} />
+          <CategoriesCompo text={"Marketing"} img={i} />
+          <CategoriesCompo text={"Arts & Crafts"} img={i} />
+          <CategoriesCompo text={"Busniess"} img={i} />
+          <CategoriesCompo text={"Leadership"} img={i} />
+          <CategoriesCompo text={"Data Science"} img={i} />
+          <CategoriesCompo text={"Lifestyle"} img={i} />
+          <CategoriesCompo text={"Management"} img={i} />
         </div>
       </div>
     </>

@@ -23,6 +23,11 @@ const IsAdmin = () => {
         </NavLink>
       </li>
       <li>
+        <NavLink to="/dashboard/editfaq">
+          <FaUsers></FaUsers> Edit Faq
+        </NavLink>
+      </li>
+      <li>
         <NavLink to="/dashboard/payhistory">
           <FaUsers></FaUsers> Payment History
         </NavLink>

@@ -19,6 +19,7 @@ import UserPayHistory from "../Pages/DashboardPages/Panel/UserPanel/UserPayHisto
 import Payment from "../Pages/DashboardPages/Shared/Payment/Payment";
 import AdminRoute from "./AdminRoute";
 import ClassesPages from "../Pages/ClassesPages/ClassesPages";
+import EditFaq from "../Pages/DashboardPages/Panel/AdminPanel/EditFaq/EditFaq";
 
 export const router = createBrowserRouter([
   {
@@ -74,6 +75,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <ManageUsers />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "editfaq",
+        element: (
+          <AdminRoute>
+            <EditFaq />
           </AdminRoute>
         ),
       },

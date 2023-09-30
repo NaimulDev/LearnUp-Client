@@ -20,6 +20,7 @@ import Payment from "../Pages/DashboardPages/Shared/Payment/Payment";
 import AdminRoute from "./AdminRoute";
 import ClassesPages from "../Pages/ClassesPages/ClassesPages";
 import EditFaq from "../Pages/DashboardPages/Panel/AdminPanel/EditFaq/EditFaq";
+import CourseCategory from "../Pages/courseCategory/CourseCategory";
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
       {
         path: "/courses",
         element: <ClassesPages />,
+      },
+      {
+        path: "/courses/:category",
+        element: <CourseCategory />,
       },
       {
         path: "/instructors",

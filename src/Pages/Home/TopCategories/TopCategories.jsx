@@ -1,7 +1,19 @@
 import CategoriesCompo from "./CategoriesCompo";
 import i from "../../../assets/icons/teacher.png";
 import TopTitle from "../../../Components/TopTitle/TopTitle";
+
 const TopCategories = () => {
+  const categoriesItem = [
+    { genre: "Development", name: "Development" },
+    { genre: "Marketing", name: "Marketing" },
+    { genre: "Arts", name: "Arts & Crafts" },
+    { genre: "Busniess", name: "Busniess" },
+    { genre: "Leadership", name: "Leadership" },
+    { genre: "Data", name: "Data Science" },
+    { genre: "Lifestyle", name: "Lifestyle" },
+    { genre: "Management", name: "Management" },
+  ];
+
   return (
     <>
       <div className="pt-24 px-4 md:px-32 pb-5">
@@ -12,15 +24,12 @@ const TopCategories = () => {
           }
           btn={"view All Course"}
         />
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <CategoriesCompo text={"Development"} img={i} />
-          <CategoriesCompo text={"Marketing"} img={i} />
-          <CategoriesCompo text={"Arts & Crafts"} img={i} />
-          <CategoriesCompo text={"Busniess"} img={i} />
-          <CategoriesCompo text={"Leadership"} img={i} />
-          <CategoriesCompo text={"Data Science"} img={i} />
-          <CategoriesCompo text={"Lifestyle"} img={i} />
-          <CategoriesCompo text={"Management"} img={i} />
+        <div>
+          <ul className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {categoriesItem.map((category, index) => (
+              <CategoriesCompo key={index} text={category.name} img={i} />
+            ))}
+          </ul>
         </div>
       </div>
     </>

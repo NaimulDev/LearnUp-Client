@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 // import { instructorsFetch } from "../../../api/useClasses";
 import { Link } from "react-router-dom";
 import { instructorsFetch } from "../../../../hooks/useClasses";
+import DashSectionTitle from "../../../../Components/dashSectionTitle/DashSectionTitle";
 
 const MyAddedClass = () => {
   const [instructor] = instructorsFetch();
@@ -13,11 +14,11 @@ const MyAddedClass = () => {
       <Helmet>
         <title>LearnUP || All Classes</title>
       </Helmet>
-      {/* <DashSectionTitle
+      <DashSectionTitle
         name="Classes"
         title="My All Classes"
-        subTitle="Your interested and health sporting game !"
-      /> */}
+        subTitle="see all Class !"
+      />
       <div className="overflow-x-auto">
         <table
           data-aos="fade-down"
@@ -29,9 +30,9 @@ const MyAddedClass = () => {
           <thead>
             <tr className="text-xl text-center">
               <th>Image</th>
-              <th>Sports</th>
+              <th>Classes</th>
               <th>Status</th>
-              <th>Total Student</th>
+              <th>Total seats</th>
               <th>Update</th>
             </tr>
           </thead>
@@ -41,7 +42,7 @@ const MyAddedClass = () => {
                 <td>
                   <div className="mask mask-squircle w-20 h-16">
                     <img
-                      src={item?.image}
+                      src={item?.img}
                       alt="Avatar Tailwind CSS Component"
                       className="w-full"
                     />
@@ -49,14 +50,14 @@ const MyAddedClass = () => {
                 </td>
                 <td>
                   <spna className="text-xl font-semibold">
-                    {item?.sportsName}
+                    {item?.category}
                   </spna>
                 </td>
                 <td>{item?.status}</td>
-                <td>{item?.seat}</td>
+                <td>{item?.seats}</td>
                 <td>
-                  <Link to={`/dashboard/update/${item?._id}`}>
-                    <button className="bg-main_color text-white text-lg font-medium py-2 px-4 rounded-lg hover:bg-green-700 transition duration-200">
+                  <Link to={`/dashboard/myclass/update/${item?._id}`}>
+                    <button className="bg-green-600 text-white text-lg font-medium py-2 px-4 rounded-lg hover:bg-green-800 transition duration-200">
                       Update
                     </button>
                   </Link>

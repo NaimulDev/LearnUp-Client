@@ -1,57 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import JoditEditor from "jodit-react";
+import "jodit/build/jodit.min.css";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
+
 const VITE_IMAGE_KEY = import.meta.env.VITE_IMAGE_KEY;
 const AddClasses = () => {
-  // const handleClasses = (event) => {
-  //   event.preventDefault();
-
-  //   const form = event.target;
-  //   const img = form.img.value;
-  //   const name = form.name.value;
-  //   const sellerName = form.sellerName.value;
-  //   const email = form.email.value;
-
-  //   const price = form.price.value;
-
-  //   const quantity = form.quantity.value;
-  //   const details = form.details.value;
-  //   const addClass = {
-  //     name,
-  //     sellerName,
-  //     email,
-  //     price,
-  //     quantity,
-  //     details,
-  //     img,
-  //   };
-
-  //   fetch("https://toy-marketplace-server-dusky-eight.vercel.app/toyProducts", {
-  //     method: "POST",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(addClass),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data.insertedId) {
-  //         Swal.fire({
-  //           title: "Success!",
-  //           text: "Add toys successfully",
-  //           icon: "success",
-  //           confirmButtonText: "Ok",
-  //         });
-  //         form.reset();
-  //       }
-  //     });
-  // };
-
   const [axiosSecure] = useAxiosSecure();
   const { register, handleSubmit, reset } = useForm();
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${VITE_IMAGE_KEY}`;
-
+  const [classDetails, setClassDetails] = useState("");
+  console.log(classDetails);
+  const editorConfig = {
+    readonly: false, // Configure Jodit options here
+    placeholder: "About Course...",
+    // Add any other Jodit options you need
+  };
   const onSubmit = (data) => {
     const formData = new FormData();
     formData.append("image", data.image[0]);
@@ -72,7 +37,7 @@ const AddClasses = () => {
             oldPrice,
             newPrice,
             category,
-            classDetails,
+
             image,
           } = data;
           const newItem = {
@@ -85,6 +50,7 @@ const AddClasses = () => {
             rating: 4.5,
             oldPrice: parseFloat(oldPrice),
             newPrice: parseFloat(newPrice),
+
             classDetails,
             lastUpdated: "2023-09-04",
             duration: "5 hours 20 minutes",
@@ -108,7 +74,7 @@ const AddClasses = () => {
   };
   return (
     <div className="max-w-6xl  mx-auto text-center">
-      <div className=" px-10 w-1/2 items-center justify-center mx-auto">
+      <div className=" px-10  items-center justify-center mx-auto">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-control w-full mb-4">
             <label className="label">
@@ -202,17 +168,17 @@ const AddClasses = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Class Details</span>
+              <span className="label-text">About Course</span>
             </label>
-            <textarea
-              {...register("classDetails", { required: true })}
-              className="textarea textarea-bordered h-24"
-              placeholder="Bio"
-            ></textarea>
+            <JoditEditor
+              value={classDetails}
+              config={editorConfig}
+              onBlur={(newContent) => setClassDetails(newContent)}
+            />
           </div>
           <div className="form-control w-full my-4">
             <label className="label">
-              <span className="label-text">Class Image*</span>
+              <span className="label-text">Image*</span>
             </label>
             <input
               type="file"

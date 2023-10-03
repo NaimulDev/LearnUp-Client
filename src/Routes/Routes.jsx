@@ -22,6 +22,7 @@ import ClassesPages from "../Pages/ClassesPages/ClassesPages";
 import EditFaq from "../Pages/DashboardPages/Panel/AdminPanel/EditFaq/EditFaq";
 import CourseCategory from "../Pages/courseCategory/CourseCategory";
 import UpdateClass from "../Pages/DashboardPages/Panel/IsInstractorPanel/UpdateClass/UpdateClass";
+import CoursesDetails from "../Pages/coursesDetails/CoursesDetails";
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
       {
         path: "/courses/:category",
         element: <CourseCategory />,
+      },
+      {
+        path: "/course/:courseTitle",
+        element: <CoursesDetails />,
       },
       {
         path: "/instructors",

@@ -4,6 +4,7 @@ import React, { useContext, useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { Link } from "react-router-dom";
 
 const token = localStorage.getItem("access-token");
 
@@ -40,6 +41,7 @@ const ClassCart = ({ classItem }) => {
   const admin = currentUser?.role === "admin";
 
   const {
+    _id,
     name,
     insName,
     seats,
@@ -117,21 +119,23 @@ const ClassCart = ({ classItem }) => {
       onMouseEnter={() => setIsHiddenDivVisible(true)}
       onMouseLeave={() => setIsHiddenDivVisible(false)}
     >
-      <div className="text-white p-3">
-        <div>
-          <img
-            src={img}
-            alt=""
-            className="mb-2 w-full transition-transform transform hover:scale-105"
-          />
+      <Link to={`/course/${courseTitle}`}>
+        <div className="text-white p-3">
+          <div>
+            <img
+              src={img}
+              alt=""
+              className="mb-2 w-full transition-transform transform hover:scale-105"
+            />
+          </div>
+          <h1 className="text-2xl font-bold">{courseTitle}</h1>
+          <h6>{insName}</h6>
+          <p>{rating}</p>
+          <h2 className="text-2xl">
+            ${oldPrice} <span> ${newPrice}</span>
+          </h2>
         </div>
-        <h1 className="text-2xl font-bold">{courseTitle}</h1>
-        <h6>{name}</h6>
-        <p>{rating}</p>
-        <h2 className="text-2xl">
-          ${oldPrice} <span> ${newPrice}</span>
-        </h2>
-      </div>
+      </Link>
       {/* Hidden div that appears above the other cart layout on hover */}
       {isHiddenDivVisible && (
         <div className="absolute -right-72 top-0 p-3 w-72 bg-white border border-gray-300 z-10 opacity-100">

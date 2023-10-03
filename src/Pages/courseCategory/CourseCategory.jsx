@@ -7,7 +7,7 @@ import ClassCart from "../ClassesPages/ClassCart";
 const CourseCategory = () => {
   const { category } = useParams();
   const [axiosSecure] = useAxiosSecure();
-  console.log(category);
+
   const {
     data: classes = [],
     isLoading,
@@ -28,7 +28,22 @@ const CourseCategory = () => {
     return classes.filter((classItem) => classItem.category === category);
   }, [classes, category]);
 
-  console.log(filteredClasses);
+  if (isLoading) {
+    return (
+      <div className="text-center items-center py-14">
+        <h1 className="text-white">Loading...</h1>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="text-center items-center py-14">
+        <h1 className="text-white">Error fetching course details</h1>
+      </div>
+    );
+  }
+
   if (filteredClasses.length === 0) {
     return (
       <div className="text-center items-center py-14">

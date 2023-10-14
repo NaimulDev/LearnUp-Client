@@ -99,8 +99,8 @@ const Signup = () => {
 
   return (
     <>
-      <div className="max-w-md mx-auto mt-8">
-        <h1 className="text-2xl font-bold text-center my-5 text-white">
+      <div className="max-w-md mx-auto pt-4">
+        <h1 className="text-2xl font-bold text-center my-4  text-white">
           Create an account
         </h1>
         <form
@@ -234,7 +234,7 @@ const Signup = () => {
         </form>
 
         <SocialLogin></SocialLogin>
-        <p className="text-center  my-6 text-xl text-white">
+        <p className="text-center  py-4 text-xl text-white">
           <small>
             Already have an account? <Link to="/login">Login</Link>
           </small>

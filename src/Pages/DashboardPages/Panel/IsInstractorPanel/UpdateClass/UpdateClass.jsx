@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../../../../hooks/useAxiosSecure";
 import { instructorsFetch } from "../../../../../hooks/useClasses";
-
+import { FaBeer } from "react-icons/fa";
 const VITE_IMAGE_KEY = import.meta.env.VITE_IMAGE_KEY;
 
 const UpdateClass = () => {
@@ -122,167 +122,177 @@ const UpdateClass = () => {
   };
 
   return (
-    <>
-      <div className="text-center mx-auto my-12">
-        <Link to="/dashboard/myclass">
-          <button className="bg-green-600 text-white text-lg font-medium py-2 px-4 rounded-lg hover-bg-green-800 transition duration-200">
-            Back
-          </button>
-        </Link>
+    <div className="bg-[#eaeef3] pb-14">
+      <div className="flex items-center  justify-between mx-5 ">
+        <div>
+          <h1 className="text-3xl font-bold">Edit Course</h1>
+        </div>
+        <div className="text-sm breadcrumbs px-6 py-4 bg-slate-200 w-44 rounded-3xl my-7 ">
+          <ul className="justify-between">
+            <li>
+              <Link to="/dashboard/inshome">
+                <FaBeer /> Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/dashboard/myclass">
+                <FaBeer /> Course
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div>
+
+      <div className=" ">
         {classNotFound ? (
           <p>Class not found.</p>
         ) : (
-          <div>
-            <h2>Class ID: {id}</h2>
-            <div className="max-w-6xl mx-auto text-center">
-              <div className="px-10 items-center justify-center mx-auto">
-                <form onSubmit={handleSubmit(onSubmit)}>
-                  <div className="form-control w-full mb-4">
-                    <label className="label">
-                      <span className="label-text font-semibold">
-                        Course Title
-                      </span>
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Course Title"
-                      {...register("courseTitle")}
-                      className="input input-bordered w-full"
-                    />
-                  </div>
-                  <div className="form-control w-full mb-4">
-                    <label className="label">
-                      <span className="label-text font-semibold">
-                        Instructor Name*
-                      </span>
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Instructor Name"
-                      {...register("insName")}
-                      className="input input-bordered w-full"
-                    />
-                  </div>
-                  <div className="form-control w-full mb-4">
-                    <label className="label">
-                      <span className="label-text font-semibold">
-                        Instructor Email*
-                      </span>
-                    </label>
-                    <input
-                      type="email"
-                      placeholder="Email"
-                      {...register("email")}
-                      className="input input-bordered w-full"
-                    />
-                  </div>
-                  <div className="form-control w-full mb-4">
-                    <label className="label">
-                      <span className="label-text font-semibold">
-                        Available Seats*
-                      </span>
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Available Seats"
-                      {...register("seats")}
-                      className="input input-bordered w-full"
-                    />
-                  </div>
-                  <div className="flex my-4">
-                    <div className="form-control w-full">
-                      <label className="label">
-                        <span className="label-text">Category*</span>
-                      </label>
-                      <select
-                        {...register("category")}
-                        className="select select-bordered"
-                      >
-                        <option value="Development">Development</option>
-                        <option value="Marketing">Marketing</option>
-                        <option value="Arts & Crafts">Arts & Crafts</option>
-                        <option value="Business">Business</option>
-                        <option value="Leadership">Leadership</option>
-                        <option value="Data Science">Data Science</option>
-                        <option value="Lifestyle">Lifestyle</option>
-                        <option value="Management">Management</option>
-                      </select>
-                    </div>
-                    <div className="form-control w-full ml-4">
-                      <label className="label">
-                        <span className="label-text font-semibold">
-                          Old Price*
-                        </span>
-                      </label>
-                      <input
-                        type="number"
-                        {...register("oldPrice")}
-                        placeholder="Type here"
-                        className="input input-bordered w-full"
-                      />
-                    </div>
-                    <div className="form-control w-full ml-4">
-                      <label className="label">
-                        <span className="label-text font-semibold">
-                          New Price*
-                        </span>
-                      </label>
-                      <input
-                        type="number"
-                        {...register("newPrice")}
-                        placeholder="Type here"
-                        className="input input-bordered w-full"
-                      />
-                    </div>
-                  </div>
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">About Course</span>
-                    </label>
-                    <JoditEditor
-                      value={classDetails}
-                      config={editorConfig}
-                      onChange={(newContent) => setClassDetails(newContent)}
-                    />
-                  </div>
-
-                  <div className="form-control w-full my-4">
-                    <label className="label">
-                      <span className="label-text">Image*</span>
-                    </label>
-                    <input
-                      type="file"
-                      {...register("image")}
-                      className="file-input file-input-bordered w-full"
-                    />
-                  </div>
-                  <div className="form-control w-full my-4">
-                    <label className="label">
-                      <span className="label-text">Current Image</span>
-                    </label>
-                    {initialImage && (
-                      <img
-                        src={initialImage}
-                        alt="Current Course Image"
-                        style={{ maxWidth: "100%" }}
-                      />
-                    )}
-                  </div>
-
+          <div className="max-w-6xl mx-5 text-center bg-white rounded-xl ">
+            <div className="px-10 items-center justify-center mx-auto">
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="form-control w-full mb-4">
+                  <label className="label">
+                    <span className="label-text font-semibold">
+                      Course Title
+                    </span>
+                  </label>
                   <input
-                    className="btn btn-sm mt-4"
-                    type="submit"
-                    value="Update Course"
+                    type="text"
+                    placeholder="Course Title"
+                    {...register("courseTitle")}
+                    className="input input-bordered w-full"
                   />
-                </form>
-              </div>
+                </div>
+                <div className="form-control w-full mb-4">
+                  <label className="label">
+                    <span className="label-text font-semibold">
+                      Instructor Name*
+                    </span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Instructor Name"
+                    {...register("insName")}
+                    className="input input-bordered w-full"
+                  />
+                </div>
+                <div className="form-control w-full mb-4">
+                  <label className="label">
+                    <span className="label-text font-semibold">
+                      Instructor Email*
+                    </span>
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    {...register("email")}
+                    className="input input-bordered w-full"
+                  />
+                </div>
+                <div className="form-control w-full mb-4">
+                  <label className="label">
+                    <span className="label-text font-semibold">
+                      Available Seats*
+                    </span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Available Seats"
+                    {...register("seats")}
+                    className="input input-bordered w-full"
+                  />
+                </div>
+                <div className="flex my-4">
+                  <div className="form-control w-full">
+                    <label className="label">
+                      <span className="label-text">Category*</span>
+                    </label>
+                    <select
+                      {...register("category")}
+                      className="select select-bordered"
+                    >
+                      <option value="Development">Development</option>
+                      <option value="Marketing">Marketing</option>
+                      <option value="Arts & Crafts">Arts & Crafts</option>
+                      <option value="Business">Business</option>
+                      <option value="Leadership">Leadership</option>
+                      <option value="Data Science">Data Science</option>
+                      <option value="Lifestyle">Lifestyle</option>
+                      <option value="Management">Management</option>
+                    </select>
+                  </div>
+                  <div className="form-control w-full ml-4">
+                    <label className="label">
+                      <span className="label-text font-semibold">
+                        Old Price*
+                      </span>
+                    </label>
+                    <input
+                      type="number"
+                      {...register("oldPrice")}
+                      placeholder="Type here"
+                      className="input input-bordered w-full"
+                    />
+                  </div>
+                  <div className="form-control w-full ml-4">
+                    <label className="label">
+                      <span className="label-text font-semibold">
+                        New Price*
+                      </span>
+                    </label>
+                    <input
+                      type="number"
+                      {...register("newPrice")}
+                      placeholder="Type here"
+                      className="input input-bordered w-full"
+                    />
+                  </div>
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">About Course</span>
+                  </label>
+                  <JoditEditor
+                    value={classDetails}
+                    config={editorConfig}
+                    onChange={(newContent) => setClassDetails(newContent)}
+                  />
+                </div>
+
+                <div className="form-control w-full my-4">
+                  <label className="label">
+                    <span className="label-text">Image*</span>
+                  </label>
+                  <input
+                    type="file"
+                    {...register("image")}
+                    className="file-input file-input-bordered w-full"
+                  />
+                </div>
+                <div className="form-control w-full my-4">
+                  <label className="label">
+                    <span className="label-text">Current Image</span>
+                  </label>
+                  {initialImage && (
+                    <img
+                      src={initialImage}
+                      alt="Current Course Image"
+                      style={{ maxWidth: "100%" }}
+                    />
+                  )}
+                </div>
+
+                <input
+                  className="btn btn-sm mt-4"
+                  type="submit"
+                  value="Update Course"
+                />
+              </form>
             </div>
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

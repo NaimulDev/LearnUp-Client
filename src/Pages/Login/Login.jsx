@@ -43,8 +43,8 @@ const Login = () => {
       <Helmet>
         <title>LearnUP | Login</title>
       </Helmet>
-      <div className="max-w-md mx-auto mt-8">
-        <h1 className="text-2xl font-bold text-center my-5 text-white">
+      <div className="max-w-md mx-auto py-10">
+        <h1 className="text-2xl font-bold text-center text-white my-12">
           Log in to your account
         </h1>
         <form

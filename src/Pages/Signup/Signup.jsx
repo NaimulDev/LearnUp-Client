@@ -48,7 +48,7 @@ const Signup = () => {
           .then((result) => {
             updateUserProfile(data.name, imageAdders).then(() => {
               axios
-                .post("https://learn-up-server.vercel.app/users", {
+                .post(`${import.meta.env.VITE_API_URL}/users`, {
                   name: data.name,
                   email: data.email,
                   image: imageAdders,

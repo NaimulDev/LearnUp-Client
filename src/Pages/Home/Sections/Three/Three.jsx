@@ -42,12 +42,16 @@ const Three = () => {
         </div>
       </div>
       <div className="px-4 md:mx-32 ">
-        <TopTitle
-          title={"Learners say about Ellen"}
-          subTitle={
-            "Explore all of our courses and pick your suitable ones to enroll and start learning with us!"
-          }
-        />
+        <div className="text-white space-y-4">
+          <h1 className="text-3xl md:text-4xl font-bold">
+            Learners say about Ellen
+          </h1>
+          <p className="text-xs md:text-sm">
+            Explore all of our courses and pick your suitable ones to enroll and
+            start learning with us!
+          </p>
+        </div>
+
         <div className="my-24">
           <InfiniteCardSlider />
         </div>

@@ -18,7 +18,7 @@ const ClassCart = ({ classItem }) => {
   const { data: fetchedUsers = [] } = useQuery(
     ["users"],
     async () => {
-      const res = await fetch(`https://learn-up-server.vercel.app/users/`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/users/`, {
         headers: {
           authorization: `bearer ${token}`,
         },
@@ -85,7 +85,7 @@ const ClassCart = ({ classItem }) => {
       }).then((result) => {
         if (result.isConfirmed) {
           Swal.fire("Added!", "You have been added to the class.", "success");
-          fetch("https://learn-up-server.vercel.app/mySelectedClasses", {
+          fetch(`${import.meta.env.VITE_API_URL}/mySelectedClasses`, {
             method: "POST",
             headers: {
               "content-type": "application/json",

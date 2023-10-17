@@ -58,7 +58,7 @@ const AuthProvider = ({ children }) => {
       // get and set token
       if (currentUser) {
         axios
-          .post("https://learn-up-server.vercel.app/jwt", {
+          .post(`${import.meta.env.VITE_API_URL}/jwt`, {
             email: currentUser.email,
           })
           .then((data) => {

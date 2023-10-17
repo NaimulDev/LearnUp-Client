@@ -7,7 +7,7 @@ const ClassesPages = () => {
   const [classes, setClasses] = useState([]);
 
   useEffect(() => {
-    fetch("https://learn-up-server.vercel.app/class", {
+    fetch(`${import.meta.env.VITE_API_URL}/class`, {
       headers: {
         authorization: `bearer ${token}`,
       },
@@ -23,7 +23,7 @@ const ClassesPages = () => {
   console.log(classes);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 mx-4 md:mx-36 lg:mx-14">
+    <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 mx-4 md:mx-36 lg:mx-24">
       {classes.map((classItem, idx) => (
         <ClassCart key={idx} classItem={classItem} />
       ))}

@@ -4,11 +4,14 @@ import { Link, NavLink } from "react-router-dom";
 // import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 import { FaSearch } from "react-icons/fa";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import { useAdmin, useInstractor } from "../../../hooks/useAdmin";
 
 const NavBar = () => {
   // const [cart, setCart] = useContext(CartContext || []);
   const { user, logOut } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAdmin] = useAdmin();
+  const [isIntractor] = useInstractor();
   const handleLogOut = () => {
     logOut()
       .then()
@@ -118,7 +121,13 @@ const NavBar = () => {
               <>
                 <NavLink
                   id="nav"
-                  to="/dashboard "
+                  to={
+                    isAdmin
+                      ? "/dashboard/adminhome"
+                      : isIntractor
+                      ? "/dashboard/inshome"
+                      : "/dashboard/userhome"
+                  }
                   aria-label="Dashboard "
                   title="Dashboard "
                   className={({ isActive }) =>

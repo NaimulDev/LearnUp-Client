@@ -1,4 +1,3 @@
-import React, { useContext } from "react";
 import { FaCalendarAlt, FaHome, FaWallet } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 

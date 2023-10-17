@@ -19,6 +19,7 @@ import IsAdmin from "../Pages/DashboardPages/Shared/Sidebar/IsAdmin";
 import IsInstractors from "../Pages/DashboardPages/Shared/Sidebar/IsInstractors";
 import IsUser from "../Pages/DashboardPages/Shared/Sidebar/IsUser";
 import { useAdmin, useInstractor } from "../hooks/useAdmin";
+import { LoadingBar } from "react-redux-loading-bar";
 
 // import useCart from "../hooks/useCart";
 
@@ -27,19 +28,24 @@ const Dashboard = () => {
 
   // TODO: load data from the server to have dynamic isAdmin based on Data
   // const isAdmin = true;
+
   const [isAdmin] = useAdmin();
   const [isIntractor] = useInstractor();
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, loading } = useContext(AuthContext);
   const handleLogOut = () => {
     logOut()
       .then()
       .catch((error) => console.log(error));
   };
 
+  if (loading) {
+    return <LoadingBar />;
+  }
+
   return (
-    <div className="drawer drawer-mobile lg:drawer-open">
+    <div className="drawer drawer-mobile lg:drawer-open ">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content">
+      <div className="drawer-content bg-primary text-white">
         <label
           htmlFor="my-drawer-2"
           className="btn btn-primary drawer-button lg:hidden"
@@ -50,7 +56,7 @@ const Dashboard = () => {
         <Outlet></Outlet>
       </div>
 
-      <div className="drawer-side bg-[#bae7ff]">
+      <div className="drawer-side bg-secondary text-white ">
         <label htmlFor="my-drawer-2" className="drawer-overlay">
           <div className="justify-center text-center space-y-4 mt-9">
             <div className="avatar cursor-pointer">
@@ -80,6 +86,21 @@ const Dashboard = () => {
 
           <div className="divider"></div>
         </ul>
+        {/* <ul className="menu p-4 w-80">
+          {loading ? (
+            // Show a loader component or some loading animation here
+            <LoaderComponent />
+          ) : (
+            <>
+              {isAdmin ? (
+                <IsAdmin />
+              ) : (
+                <>{isIntractor ? <IsInstractors /> : <IsUser />}</>
+              )}
+            </>
+          )}
+          <div className="divider"></div>
+        </ul> */}
         <hr className="my-5" />
 
         {/* <li className="ml-24">

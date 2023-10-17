@@ -83,7 +83,7 @@ const ManageClasses = () => {
     // const fed = e.target.value;
     // console.log(fed);
 
-    fetch(`https://learn-up-server.vercel.app/feedback/${_id}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/feedback/${_id}`, {
       method: "PATCH",
       headers: {
         authorization: `bearer ${token}`,
@@ -104,7 +104,7 @@ const ManageClasses = () => {
         }
       });
   };
-
+  console.log(Classes);
   return (
     <div>
       <Helmet>
@@ -124,9 +124,9 @@ const ManageClasses = () => {
         data-aos-duration="1500"
         className="overflow-x-auto"
       >
-        <table className="table">
+        <table className="table ">
           {/* head */}
-          <thead>
+          <thead className="text-accent">
             <tr className="text-center text-lg">
               <th>Image</th>
               <th>Class Name</th>
@@ -139,16 +139,16 @@ const ManageClasses = () => {
               <th></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="text-white">
             {/* row 1 */}
             {Classes.map((item) => (
               <tr key={item._id}>
                 <td>
                   <div className="mask mask-squircle w-14 h-14">
-                    <img src={item.image} alt="Avatar Tailwind CSS Component" />
+                    <img src={item.img} alt="Avatar Tailwind CSS Component" />
                   </div>
                 </td>
-                <td className=" text-center">{item.name}</td>
+                <td className=" text-center">{item.courseTitle}</td>
                 <td>
                   <p className="text-center">
                     {item.insName} <br />
@@ -156,15 +156,15 @@ const ManageClasses = () => {
                   </p>
                 </td>
                 <td className="text-center">{item.seats}</td>
-                <td className="">${item.price}</td>
+                <td className="">${item.newPrice}</td>
                 <td className="text-green-600 font-medium ">{item.status}</td>
-                <td>
+                <td className="">
                   {item?.status === "Approved" ? (
                     "Approved"
                   ) : (
                     <button
                       onClick={() => handleMakeApproved(item)}
-                      className="btn btn-xs lowercase  bg-main_color text-base text-white"
+                      className="btn  lowercase  bg-green-800 text-base text-white"
                     >
                       Approved
                     </button>
@@ -188,7 +188,7 @@ const ManageClasses = () => {
                   ) : (
                     <>
                       <button
-                        className="btn btn-xs bg-red-500 lowercase text-base text-white"
+                        className="btn btn-xs bg-red-500 lowercase text-base text-secondary"
                         onClick={openModal}
                       >
                         feedback

@@ -19,7 +19,7 @@ const SelectedClass = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://learn-up-server.vercel.app/bookmark/${user._id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/bookmark/${user._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

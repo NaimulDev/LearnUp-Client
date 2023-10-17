@@ -9,7 +9,11 @@ const ManageAllUser = () => {
   const [isButtonDisabled, setButtonDisabled] = useState(false);
 
   const [axiosSecure] = useAxiosSecure();
-  const { data: users = [], refetch } = useQuery(["users"], async () => {
+  const {
+    data: users = [],
+    isLoading,
+    refetch,
+  } = useQuery(["users"], async () => {
     const res = await axiosSecure.get("/users");
     return res.data;
   });
@@ -70,7 +74,7 @@ const ManageAllUser = () => {
     });
   };
   return (
-    <div>
+    <div className="mx-8 my-5">
       <Helmet>
         <title>LearnUP || Manage Users</title>
       </Helmet>
@@ -85,65 +89,69 @@ const ManageAllUser = () => {
         data-aos-duration="1500"
         className="overflow-x-auto"
       >
-        <table className="table">
-          {/* head */}
-          <thead>
-            <tr className=" text-lg">
-              <th>Image</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th className="pl-14">Action</th>
-            </tr>
-          </thead>
-          {users?.map((user) => (
-            <tbody key={user._id}>
-              <tr className="">
-                <td>
-                  <div className="mask mask-squircle w-12 h-12">
-                    <img
-                      src={user?.image}
-                      alt="Avatar Tailwind CSS Component"
-                    />
-                  </div>
-                </td>
-                <td>{user?.name}</td>
-                <td>{user?.email}</td>
-                <td>
-                  {user?.role === "admin" ? (
-                    <span className="text-lg font-semibold text-red-800">
-                      Admin
-                    </span>
-                  ) : user?.role === "instractor" ? (
-                    <span className="text-lg font-semibold text-yellow-600">
-                      Instructor
-                    </span>
-                  ) : (
-                    <span className="text-base font-medium tracking-wider text-gray-900">
-                      User
-                    </span>
-                  )}
-                </td>
-                <td className="flex items-center gap-1">
-                  <button
-                    onClick={() => handlerMakeAdmin(user)}
-                    disabled={isButtonDisabled}
-                    className="bg-main_color bg-orange-500 text-white w-full py-2 rounded-lg shadow-xl"
-                  >
-                    Make Admin
-                  </button>
-                  <button
-                    onClick={() => handlerMakeInstructor(user)}
-                    disabled={isButtonDisabled}
-                    className="bg-main_color bg-orange-500 text-white w-full py-2 rounded-lg shadow-xl"
-                  >
-                    Make Instructor
-                  </button>
-                </td>
+        {isLoading ? (
+          <div className="text-center my-4">Loading...</div>
+        ) : (
+          <table className="table">
+            {/* head */}
+            <thead>
+              <tr className=" text-lg text-accent">
+                <th>Image</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th className="pl-14">Action</th>
               </tr>
-            </tbody>
-          ))}
-        </table>
+            </thead>
+            {users?.map((user) => (
+              <tbody key={user._id}>
+                <tr className="">
+                  <td>
+                    <div className="mask mask-squircle w-12 h-12">
+                      <img
+                        src={user?.image}
+                        alt="Avatar Tailwind CSS Component"
+                      />
+                    </div>
+                  </td>
+                  <td>{user?.name}</td>
+                  <td>{user?.email}</td>
+                  <td>
+                    {user?.role === "admin" ? (
+                      <span className="text-lg font-semibold text-red">
+                        Admin
+                      </span>
+                    ) : user?.role === "instractor" ? (
+                      <span className="text-lg font-semibold text-info">
+                        Instructor
+                      </span>
+                    ) : (
+                      <span className="text-base font-medium tracking-wider text-white">
+                        User
+                      </span>
+                    )}
+                  </td>
+                  <td className="flex items-center gap-1">
+                    <button
+                      onClick={() => handlerMakeAdmin(user)}
+                      disabled={isButtonDisabled}
+                      className="bg-main_color bg-secondary text-white w-full py-2 rounded-lg shadow-xl hover:bg-red"
+                    >
+                      Make Admin
+                    </button>
+                    <button
+                      onClick={() => handlerMakeInstructor(user)}
+                      disabled={isButtonDisabled}
+                      className="bg-main_color bg-secondary text-white w-full py-2 rounded-lg shadow-xl hover:bg-red"
+                    >
+                      Make Instructor
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            ))}
+          </table>
+        )}
       </div>
     </div>
   );

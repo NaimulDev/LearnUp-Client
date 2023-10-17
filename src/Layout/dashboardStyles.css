@@ -1,0 +1,6 @@
+.menu li:hover {
+  background-color: #08a9e6;
+
+  border-radius: 8px;
+  list-style-type: none;
+}

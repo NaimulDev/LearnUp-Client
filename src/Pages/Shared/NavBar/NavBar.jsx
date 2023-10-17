@@ -5,18 +5,22 @@ import { Link, NavLink } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { useAdmin, useInstractor } from "../../../hooks/useAdmin";
+import { LoadingBar } from "react-redux-loading-bar";
 
 const NavBar = () => {
   // const [cart, setCart] = useContext(CartContext || []);
   const { user, logOut } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isAdmin] = useAdmin();
+  const [isAdmin, isAdminLoading] = useAdmin();
   const [isIntractor] = useInstractor();
   const handleLogOut = () => {
     logOut()
       .then()
       .catch((error) => console.log(error));
   };
+  if (isAdminLoading) {
+    <LoadingBar />;
+  }
   return (
     <div className="bg-black text-white px-4 py-5 mx-auto sm:max-w-xl md:max-w-full  md:px-24 lg:px-11">
       <div className="relative flex items-center justify-between">
@@ -119,23 +123,27 @@ const NavBar = () => {
           <li className="flex items-center">
             {user ? (
               <>
-                <NavLink
-                  id="nav"
-                  to={
-                    isAdmin
-                      ? "/dashboard/adminhome"
-                      : isIntractor
-                      ? "/dashboard/inshome"
-                      : "/dashboard/userhome"
-                  }
-                  aria-label="Dashboard "
-                  title="Dashboard "
-                  className={({ isActive }) =>
-                    isActive ? "active" : "default"
-                  }
-                >
-                  Dashboard
-                </NavLink>
+                {isAdminLoading ? (
+                  <LoadingBar />
+                ) : (
+                  <NavLink
+                    id="nav"
+                    to={
+                      isAdmin
+                        ? "/dashboard/adminhome"
+                        : isIntractor
+                        ? "/dashboard/inshome"
+                        : "/dashboard/userhome"
+                    }
+                    aria-label="Dashboard "
+                    title="Dashboard "
+                    className={({ isActive }) =>
+                      isActive ? "active" : "default"
+                    }
+                  >
+                    Dashboard
+                  </NavLink>
+                )}
                 <button
                   id="nav"
                   className="bg-red py-2 px-8 ml-5"

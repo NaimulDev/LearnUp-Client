@@ -15,7 +15,10 @@ const AddClasses = () => {
   const editorConfig = {
     readonly: false, // Configure Jodit options here
     placeholder: "About Course...",
-    // Add any other Jodit options you need
+    style: {
+      background: "#21225f",
+      color: "#08a9e6",
+    },
   };
   const onSubmit = (data) => {
     const formData = new FormData();
@@ -37,8 +40,6 @@ const AddClasses = () => {
             oldPrice,
             newPrice,
             category,
-
-            image,
           } = data;
           const newItem = {
             img: imgURL,
@@ -73,34 +74,38 @@ const AddClasses = () => {
       });
   };
   return (
-    <div className="max-w-6xl  mx-auto text-center">
-      <div className=" px-10  items-center justify-center mx-auto">
+    <div className="max-w-6xl  mx-auto text-center text-white">
+      <div className=" px-10  items-center justify-center mx-auto text-white">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="form-control w-full mb-4">
+          <div className="form-control w-full mb-4 ">
             <label className="label">
-              <span className="label-text font-semibold">Course Title</span>
+              <span className="label-text font-semibold text-white">
+                Course Title
+              </span>
             </label>
             <input
               type="text"
               placeholder="Course Title"
               {...register("courseTitle", { required: true, maxLength: 120 })}
-              className="input input-bordered w-full "
+              className="input input-bordered w-full bg-primary text-info"
             />
           </div>
           <div className="form-control w-full mb-4">
             <label className="label">
-              <span className="label-text font-semibold">Instructor Name*</span>
+              <span className="label-text font-semibold text-white">
+                Instructor Name*
+              </span>
             </label>
             <input
               type="text"
               placeholder="Instructor Name"
               {...register("insName", { required: true, maxLength: 120 })}
-              className="input input-bordered w-full "
+              className="input input-bordered w-full bg-primary text-info"
             />
           </div>
           <div className="form-control w-full mb-4">
             <label className="label">
-              <span className="label-text font-semibold">
+              <span className="label-text font-semibold text-white">
                 Instructor Email*
               </span>
             </label>
@@ -108,29 +113,31 @@ const AddClasses = () => {
               type="email"
               placeholder="Email"
               {...register("email", { required: true, maxLength: 120 })}
-              className="input input-bordered w-full "
+              className="input input-bordered w-full bg-primary text-info"
             />
           </div>
           <div className="form-control w-full mb-4">
             <label className="label">
-              <span className="label-text font-semibold">Ablable Seats*</span>
+              <span className="label-text font-semibold text-white">
+                Ablable Seats*
+              </span>
             </label>
             <input
               type="text"
               placeholder="Ablable Seats"
               {...register("seats", { required: true, maxLength: 120 })}
-              className="input input-bordered w-full "
+              className="input input-bordered w-full bg-primary text-info"
             />
           </div>
           <div className="flex my-4">
             <div className="form-control w-full ">
               <label className="label">
-                <span className="label-text">Category*</span>
+                <span className="label-text text-white">Category*</span>
               </label>
               <select
                 defaultValue="Pick One"
                 {...register("category", { required: true })}
-                className="select select-bordered"
+                className="select select-bordered bg-primary text-info"
               >
                 <option disabled>Pick One</option>
                 <option>Development</option>
@@ -145,48 +152,53 @@ const AddClasses = () => {
             </div>
             <div className="form-control w-full ml-4">
               <label className="label">
-                <span className="label-text font-semibold">oldPrice*</span>
+                <span className="label-text font-semibold text-white">
+                  oldPrice*
+                </span>
               </label>
               <input
                 type="number"
                 {...register("oldPrice", { required: true })}
                 placeholder="Type here"
-                className="input input-bordered w-full "
+                className="input input-bordered w-full bg-primary text-info"
               />
             </div>
             <div className="form-control w-full ml-4">
               <label className="label">
-                <span className="label-text font-semibold">newPrice*</span>
+                <span className="label-text font-semibold text-white">
+                  newPrice*
+                </span>
               </label>
               <input
                 type="number"
                 {...register("newPrice", { required: true })}
                 placeholder="Type here"
-                className="input input-bordered w-full "
+                className="input input-bordered w-full bg-primary text-info"
               />
             </div>
           </div>
-          <div className="form-control">
+          <div className="form-control ">
             <label className="label">
-              <span className="label-text">About Course</span>
+              <span className="label-text text-white">About Course</span>
             </label>
             <JoditEditor
               value={classDetails}
               config={editorConfig}
               onBlur={(newContent) => setClassDetails(newContent)}
+              style={{ backgroundColor: "primary" }}
             />
           </div>
           <div className="form-control w-full my-4">
             <label className="label">
-              <span className="label-text">Image*</span>
+              <span className="label-text text-white">Image*</span>
             </label>
             <input
               type="file"
               {...register("image", { required: true })}
-              className="file-input file-input-bordered w-full "
+              className="file-input file-input-bordered w-full bg-primary text-info"
             />
           </div>
-          <input className="btn btn-sm mt-4" type="submit" value="Add Item" />
+          <input className="btn-primary mt-4" type="submit" value="Add Item" />
         </form>
       </div>
     </div>

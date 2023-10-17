@@ -6,7 +6,7 @@ const IsAdmin = () => {
   return (
     <div>
       <li>
-        <NavLink to="/dashboard/adminhome">
+        <NavLink to="/dashboard/adminhome " activeClassName="active">
           <FaHome></FaHome> Admin Home
         </NavLink>
       </li>

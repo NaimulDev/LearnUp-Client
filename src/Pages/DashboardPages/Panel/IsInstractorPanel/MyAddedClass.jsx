@@ -19,7 +19,7 @@ const MyAddedClass = () => {
         title="My All Classes"
         subTitle="see all Class !"
       />
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto bg-secondary  text-info">
         <table
           data-aos="fade-down"
           data-aos-easing="linear"
@@ -28,7 +28,7 @@ const MyAddedClass = () => {
         >
           {/* head */}
           <thead>
-            <tr className="text-xl text-center">
+            <tr className="text-xl text-center text-info">
               <th>Image</th>
               <th>Classes</th>
               <th>Status</th>
@@ -38,7 +38,7 @@ const MyAddedClass = () => {
           </thead>
           <tbody>
             {instructor.map((item) => (
-              <tr key={item._id} className="bg-base-200 text-lg text-center">
+              <tr key={item._id} className=" text-lg text-center text-white">
                 <td>
                   <div className="mask mask-squircle w-20 h-16">
                     <img

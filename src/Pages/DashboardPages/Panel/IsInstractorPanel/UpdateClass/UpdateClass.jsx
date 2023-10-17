@@ -24,6 +24,10 @@ const UpdateClass = () => {
   const editorConfig = {
     readonly: false,
     placeholder: "About Course",
+    style: {
+      background: "#21225f",
+      color: "#08a9e6",
+    },
   };
 
   const [course, setCourse] = useState(null);
@@ -122,13 +126,13 @@ const UpdateClass = () => {
   };
 
   return (
-    <div className="bg-[#eaeef3] pb-14">
+    <div className="bg-secondary pb-14">
       <div className="flex items-center  justify-between mx-5 ">
         <div>
           <h1 className="text-3xl font-bold">Edit Course</h1>
         </div>
-        <div className="text-sm breadcrumbs px-6 py-4 bg-slate-200 w-44 rounded-3xl my-7 ">
-          <ul className="justify-between">
+        <div className="text-sm breadcrumbs px-6 py-4 bg-primary w-44 rounded-3xl my-7 ">
+          <ul className="justify-between ">
             <li>
               <Link to="/dashboard/inshome">
                 <FaBeer /> Home
@@ -147,12 +151,12 @@ const UpdateClass = () => {
         {classNotFound ? (
           <p>Class not found.</p>
         ) : (
-          <div className="max-w-6xl mx-5 text-center bg-white rounded-xl ">
-            <div className="px-10 items-center justify-center mx-auto">
+          <div className="max-w-6xl mx-5 text-center bg-secondary rounded-xl ">
+            <div className="px-10 items-center justify-center mx-auto  text-info">
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-control w-full mb-4">
                   <label className="label">
-                    <span className="label-text font-semibold">
+                    <span className="label-text font-semibold text-white">
                       Course Title
                     </span>
                   </label>
@@ -160,12 +164,12 @@ const UpdateClass = () => {
                     type="text"
                     placeholder="Course Title"
                     {...register("courseTitle")}
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full bg-primary "
                   />
                 </div>
                 <div className="form-control w-full mb-4">
                   <label className="label">
-                    <span className="label-text font-semibold">
+                    <span className="label-text font-semibold text-white">
                       Instructor Name*
                     </span>
                   </label>
@@ -173,12 +177,12 @@ const UpdateClass = () => {
                     type="text"
                     placeholder="Instructor Name"
                     {...register("insName")}
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full bg-primary "
                   />
                 </div>
                 <div className="form-control w-full mb-4">
                   <label className="label">
-                    <span className="label-text font-semibold">
+                    <span className="label-text font-semibold text-white">
                       Instructor Email*
                     </span>
                   </label>
@@ -186,12 +190,12 @@ const UpdateClass = () => {
                     type="email"
                     placeholder="Email"
                     {...register("email")}
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full bg-primary"
                   />
                 </div>
                 <div className="form-control w-full mb-4">
                   <label className="label">
-                    <span className="label-text font-semibold">
+                    <span className="label-text font-semibold text-white">
                       Available Seats*
                     </span>
                   </label>
@@ -199,17 +203,17 @@ const UpdateClass = () => {
                     type="text"
                     placeholder="Available Seats"
                     {...register("seats")}
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full bg-primary "
                   />
                 </div>
                 <div className="flex my-4">
                   <div className="form-control w-full">
                     <label className="label">
-                      <span className="label-text">Category*</span>
+                      <span className="label-text text-white">Category*</span>
                     </label>
                     <select
                       {...register("category")}
-                      className="select select-bordered"
+                      className="select select-bordered bg-primary "
                     >
                       <option value="Development">Development</option>
                       <option value="Marketing">Marketing</option>
@@ -223,7 +227,7 @@ const UpdateClass = () => {
                   </div>
                   <div className="form-control w-full ml-4">
                     <label className="label">
-                      <span className="label-text font-semibold">
+                      <span className="label-text font-semibold text-white">
                         Old Price*
                       </span>
                     </label>
@@ -231,12 +235,12 @@ const UpdateClass = () => {
                       type="number"
                       {...register("oldPrice")}
                       placeholder="Type here"
-                      className="input input-bordered w-full"
+                      className="input input-bordered w-full bg-primary "
                     />
                   </div>
                   <div className="form-control w-full ml-4">
                     <label className="label">
-                      <span className="label-text font-semibold">
+                      <span className="label-text font-semibold text-white">
                         New Price*
                       </span>
                     </label>
@@ -244,13 +248,13 @@ const UpdateClass = () => {
                       type="number"
                       {...register("newPrice")}
                       placeholder="Type here"
-                      className="input input-bordered w-full"
+                      className="input input-bordered w-full bg-primary "
                     />
                   </div>
                 </div>
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text">About Course</span>
+                    <span className="label-text text-white">About Course</span>
                   </label>
                   <JoditEditor
                     value={classDetails}
@@ -261,12 +265,12 @@ const UpdateClass = () => {
 
                 <div className="form-control w-full my-4">
                   <label className="label">
-                    <span className="label-text">Image*</span>
+                    <span className="label-text text-white">Image*</span>
                   </label>
                   <input
                     type="file"
                     {...register("image")}
-                    className="file-input file-input-bordered w-full"
+                    className="file-input file-input-bordered w-full bg-primary "
                   />
                 </div>
                 <div className="form-control w-full my-4">
@@ -283,7 +287,7 @@ const UpdateClass = () => {
                 </div>
 
                 <input
-                  className="btn btn-sm mt-4"
+                  className="btn-primary mt-4 "
                   type="submit"
                   value="Update Course"
                 />

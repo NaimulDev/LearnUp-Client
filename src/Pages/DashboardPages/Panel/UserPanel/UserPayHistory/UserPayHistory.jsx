@@ -3,7 +3,7 @@ import { userEmailToPayment } from "../../../../../hooks/usePayment";
 
 const UserPayHistory = () => {
   const [payments] = userEmailToPayment();
-
+  console.log(payments);
   return (
     <div>
       <Helmet>
@@ -14,12 +14,12 @@ const UserPayHistory = () => {
         <table className="table">
           {/* head */}
           <thead>
-            <tr className="text-lg">
+            <tr className="text-lg text-info">
               <th>Class</th>
               <th>InstructorEmail</th>
               <th>amount</th>
               <th>TransitionId</th>
-              <th>payment</th>
+              <th>Course Details</th>
             </tr>
           </thead>
           <tbody>
@@ -27,16 +27,14 @@ const UserPayHistory = () => {
               <tr key={pay?._id}>
                 <td>
                   <span className="text-base font-medium">
-                    {pay?.className}
+                    {pay?.courseTitle}
                   </span>
                 </td>
                 <td>{pay?.insEmail}</td>
-                <td>${pay?.price}</td>
-                <td>${pay?.transactionId}</td>
+                <td>$ {pay?.price}</td>
+                <td>$ {pay?.transactionId}</td>
                 <td>
-                  <p className=" text-sm text-green-500 bg-slate-200 text-center py-2 rounded-lg">
-                    confirm
-                  </p>
+                  <p className="text-red">Enrolled</p>
                 </td>
               </tr>
             ))}

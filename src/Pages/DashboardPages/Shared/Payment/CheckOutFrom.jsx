@@ -5,8 +5,10 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
 
+// eslint-disable-next-line react/prop-types
 const CheckOutFrom = ({ payment }) => {
-  const { price, className, _id, instructorEmail } = payment;
+  // eslint-disable-next-line react/prop-types
+  const { price, courseTitle, _id, instructorEmail } = payment;
   console.log("pyment ", payment);
   const stripe = useStripe();
   const elements = useElements();
@@ -26,7 +28,9 @@ const CheckOutFrom = ({ payment }) => {
   }, [price, axiosSecure]);
   console.log(price, axiosSecure);
   const handleSubmit = async (event) => {
+    console.log(event);
     event.preventDefault();
+
     if (!stripe || !elements) {
       return;
     }
@@ -69,7 +73,7 @@ const CheckOutFrom = ({ payment }) => {
         transactionId: paymentIntent.id,
         price: price,
         date: new Date(),
-        className: className,
+        courseTitle: courseTitle,
         bookedId: _id,
         instructorEmail: instructorEmail,
       };
@@ -115,7 +119,7 @@ const CheckOutFrom = ({ payment }) => {
           }}
         />
         <button
-          className="bg-main_color bg-red-500 py-2 px-5 text-white text-base rounded-xl mt-3"
+          className="btn-primary text-base rounded-xl mt-3"
           type="submit"
           disabled={!stripe || !clientSecret || processing}
         >

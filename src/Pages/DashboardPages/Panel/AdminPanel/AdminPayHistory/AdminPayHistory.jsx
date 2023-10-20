@@ -6,6 +6,7 @@ import { useAllPayment } from "../../../../../hooks/usePayment";
 
 const AdminPayHistory = () => {
   const [payments] = useAllPayment();
+  console.log(payments);
 
   return (
     <div>

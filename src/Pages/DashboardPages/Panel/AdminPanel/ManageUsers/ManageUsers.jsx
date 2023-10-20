@@ -75,7 +75,7 @@ const ManageAllUser = () => {
     });
   };
   if (isLoading) {
-    <LoadingBar></LoadingBar>;
+    return <LoadingBar></LoadingBar>;
   }
 
   return (

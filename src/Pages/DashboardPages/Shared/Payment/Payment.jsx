@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 
 import { Helmet } from "react-helmet-async";
 import CheckOutFrom from "./CheckOutFrom";
-// import CheckOutFrom from "./CheckOutFrom";
 
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_KEY);
 console.log(stripePromise);
@@ -31,7 +30,7 @@ const Payment = () => {
                 title='Make Payment'
                 subTitle='your payment information to form' /> */}
 
-      <div className="w-1/2 m-8">
+      <div className="w-1/2 m-8 ">
         <Elements stripe={stripePromise}>
           <CheckOutFrom payment={payment}></CheckOutFrom>
         </Elements>

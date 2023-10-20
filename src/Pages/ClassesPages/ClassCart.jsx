@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 const token = localStorage.getItem("access-token");
 
 const ClassCart = ({ classItem }) => {
+  console.log(classItem);
   const [isSelectButtonDisabled, setIsSelectButtonDisabled] = useState(false);
   const { user, loading } = useContext(AuthContext);
   const email = user?.email;
@@ -42,6 +43,7 @@ const ClassCart = ({ classItem }) => {
 
   const {
     _id,
+
     name,
     insName,
     seats,
@@ -59,13 +61,14 @@ const ClassCart = ({ classItem }) => {
   } = classItem;
 
   const newData = {
-    className: name,
-    instructorName: insName,
+    name,
+    insName,
+    courseTitle,
     instructorEmail: email,
-    seats: seats,
-    price: price,
+    seats,
+    price: newPrice,
     classDetails: classDetails,
-    imageURL: img,
+    img,
     status: status,
     adminFeedback: adminFeedback,
     enrolledStudents: enrolledStudents,

@@ -72,7 +72,7 @@ const EditFaq = () => {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto mt-12">
+    <div className="w-full max-w-3xl mx-auto mt-12 ">
       <div className="space-y-8">
         {questions.map((q) => (
           <div key={q._id} className="border-t border-gray-200 pt-6">
@@ -82,16 +82,16 @@ const EditFaq = () => {
                 onClick={() => toggleQuestion(q._id)}
               >
                 <input
-                  className="border-none"
+                  className="border-none bg-primary text-info text-sm py-1 px-2"
                   value={q.question}
                   onChange={(e) => handleQuestionChange(q._id, e.target.value)}
                   placeholder="Add your question..."
                 />
                 <span className="ml-6 flex-shrink-0">
                   {q.active ? (
-                    <FaMinus className="h-6 w-6" />
+                    <FaMinus className="h-6 w-6 text-white" />
                   ) : (
-                    <FaPlus className="h-6 w-6" />
+                    <FaPlus className="h-6 w-6 text-white" />
                   )}
                 </span>
               </button>
@@ -99,14 +99,14 @@ const EditFaq = () => {
             {q.active && (
               <div className="mt-2 pr-12">
                 <input
-                  className="border-none"
+                  className="border-none bg-primary text-info px-2 py-1 text-sm"
                   value={q.answer}
                   onChange={(e) => handleAnswerChange(q._id, e.target.value)}
                   placeholder="Add your answer..."
                 />
-                <span className="ml-6 flex-shrink-0">
+                <span className="ml-6 flex-shrink-0 ">
                   <AiOutlineDelete
-                    className="text-black text-lg cursor-pointer"
+                    className="text-white text-lg cursor-pointer mt-2"
                     onClick={() => {
                       setQuestions((prevQuestions) =>
                         prevQuestions.filter((item) => item._id !== q._id)
@@ -119,9 +119,9 @@ const EditFaq = () => {
           </div>
         ))}
       </div>
-      <div className="mt-6">
+      <div className="mt-6 ">
         <IoMdAddCircleOutline
-          className="text-black text-2xl cursor-pointer"
+          className="text-white text-2xl cursor-pointer"
           onClick={newFaqHandler}
         />
       </div>

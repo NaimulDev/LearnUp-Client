@@ -32,12 +32,12 @@ const SelectedClass = () => {
       }
     });
   };
-
+  console.log(bookMark);
   return (
-    <div>
+    <div className="">
       <div className="overflow-x-auto">
-        <table className="table">
-          <thead>
+        <table className="table ">
+          <thead className="text-info">
             <tr>
               <th>#</th>
               <th>Image</th>
@@ -47,7 +47,7 @@ const SelectedClass = () => {
               <th>Delete</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="text-white">
             {bookMark.map((user, index) => (
               <tr key={user._id}>
                 <th>{index + 1}</th>
@@ -55,21 +55,18 @@ const SelectedClass = () => {
                   <div className="flex items-center space-x-3">
                     <div className="avatar">
                       <div className="mask mask-squircle w-12 h-12">
-                        <img
-                          src={user?.image}
-                          alt="Avatar Tailwind CSS Component"
-                        />
+                        <img src={user?.img} alt="img" />
                       </div>
                     </div>
                   </div>
                 </td>
                 <td>
                   <div>
-                    <div className="font-bold">{user?.name}</div>
+                    <div className="font-bold">{user?.courseTitle}</div>
                   </div>
                 </td>
                 <td>
-                  {user?.price}
+                  {user?.newPrice}
                   <br />
                 </td>
                 <td>

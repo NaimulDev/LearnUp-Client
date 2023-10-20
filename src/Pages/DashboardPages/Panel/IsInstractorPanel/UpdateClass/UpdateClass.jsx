@@ -40,7 +40,7 @@ const UpdateClass = () => {
         setCourse(courseData);
         setValue("courseTitle", courseData.courseTitle);
         setValue("insName", courseData.insName);
-        setValue("email", courseData.email);
+        setValue("insEmail", courseData.insEmail);
         setValue("seats", courseData.seats);
         setValue("oldPrice", courseData.oldPrice);
         setValue("newPrice", courseData.newPrice);
@@ -86,7 +86,7 @@ const UpdateClass = () => {
             img: imgURL,
             courseTitle: data.courseTitle,
             insName: data.insName,
-            email: data.email,
+            insEmail: data.insEmail,
             seats: data.seats,
             oldPrice: parseFloat(data.oldPrice),
             newPrice: parseFloat(data.newPrice),
@@ -189,7 +189,7 @@ const UpdateClass = () => {
                   <input
                     type="email"
                     placeholder="Email"
-                    {...register("email")}
+                    {...register("insEmail")}
                     className="input input-bordered w-full bg-primary"
                   />
                 </div>

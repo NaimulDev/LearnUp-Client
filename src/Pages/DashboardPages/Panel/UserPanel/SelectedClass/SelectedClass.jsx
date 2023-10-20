@@ -66,7 +66,7 @@ const SelectedClass = () => {
                   </div>
                 </td>
                 <td>
-                  {user?.newPrice}
+                  {user?.price}
                   <br />
                 </td>
                 <td>

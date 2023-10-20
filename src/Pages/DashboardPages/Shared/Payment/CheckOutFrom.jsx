@@ -8,7 +8,7 @@ import useAuth from "../../../../hooks/useAuth";
 // eslint-disable-next-line react/prop-types
 const CheckOutFrom = ({ payment }) => {
   // eslint-disable-next-line react/prop-types
-  const { price, courseTitle, _id, instructorEmail } = payment;
+  const { price, courseTitle, _id, insEmail } = payment;
   console.log("pyment ", payment);
   const stripe = useStripe();
   const elements = useElements();
@@ -75,7 +75,7 @@ const CheckOutFrom = ({ payment }) => {
         date: new Date(),
         courseTitle: courseTitle,
         bookedId: _id,
-        instructorEmail: instructorEmail,
+        insEmail,
       };
       axiosSecure.post("/payments", payment).then((res) => {
         // console.log(res.data);

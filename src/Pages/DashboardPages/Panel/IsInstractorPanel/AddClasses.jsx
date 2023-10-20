@@ -35,7 +35,7 @@ const AddClasses = () => {
           const {
             courseTitle,
             insName,
-            email,
+            insEmail,
             seats,
             oldPrice,
             newPrice,
@@ -45,7 +45,7 @@ const AddClasses = () => {
             img: imgURL,
             courseTitle,
             insName,
-            email,
+            insEmail,
             category,
             seats,
             rating: 4.5,
@@ -111,8 +111,8 @@ const AddClasses = () => {
             </label>
             <input
               type="email"
-              placeholder="Email"
-              {...register("email", { required: true, maxLength: 120 })}
+              placeholder="instructor Email"
+              {...register("insEmail", { required: true, maxLength: 120 })}
               className="input input-bordered w-full bg-primary text-info"
             />
           </div>

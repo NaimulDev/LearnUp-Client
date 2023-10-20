@@ -152,7 +152,7 @@ const ManageClasses = () => {
                 <td>
                   <p className="text-center">
                     {item.insName} <br />
-                    <span>{item.email}</span>
+                    <span>{item.insEmail}</span>
                   </p>
                 </td>
                 <td className="text-center">{item.seats}</td>

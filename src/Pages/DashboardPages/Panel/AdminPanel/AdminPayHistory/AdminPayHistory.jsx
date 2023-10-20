@@ -27,7 +27,7 @@ const AdminPayHistory = () => {
         <table className="table table-zebra">
           {/* head */}
           <thead>
-            <tr className="text-center text-lg">
+            <tr className="text-center text-lg text-info">
               <th>Class</th>
               <th>userEmail</th>
               <th>Ins.email</th>
@@ -41,7 +41,7 @@ const AdminPayHistory = () => {
               <tr key={payment._id}>
                 <td>
                   {" "}
-                  <span>{payment?.name}</span>
+                  <span>{payment?.courseTitle}</span>
                 </td>
                 <td>
                   {" "}
@@ -49,11 +49,11 @@ const AdminPayHistory = () => {
                 </td>
                 <td>
                   {" "}
-                  <span>{payment?.insName}</span>
+                  <span>{payment?.insEmail}</span>
                 </td>
                 <td>
                   {" "}
-                  <span>{payment?.price}</span>
+                  <span>$ {payment?.price}</span>
                 </td>
                 <td>
                   {" "}

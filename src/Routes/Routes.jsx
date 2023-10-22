@@ -19,10 +19,12 @@ import UserPayHistory from "../Pages/DashboardPages/Panel/UserPanel/UserPayHisto
 import Payment from "../Pages/DashboardPages/Shared/Payment/Payment";
 import AdminRoute from "./AdminRoute";
 import ClassesPages from "../Pages/ClassesPages/ClassesPages";
+
 import EditFaq from "../Pages/DashboardPages/Panel/AdminPanel/EditFaq/EditFaq";
 import CourseCategory from "../Pages/courseCategory/CourseCategory";
 import UpdateClass from "../Pages/DashboardPages/Panel/IsInstractorPanel/UpdateClass/UpdateClass";
 import CoursesDetails from "../Pages/coursesDetails/CoursesDetails";
+import Contact from "../Pages/contact/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -59,8 +61,8 @@ export const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "/contact",
-        element: <Home></Home>,
+        path: "/contact-us",
+        element: <Contact />,
       },
       {
         path: "/signup",

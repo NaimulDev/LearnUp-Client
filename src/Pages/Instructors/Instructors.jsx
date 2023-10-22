@@ -2,10 +2,14 @@ import React from "react";
 import SingleInstructor from "./SingleInstructor";
 import { Helmet } from "react-helmet-async";
 import useInstructors from "../../hooks/UseInstructors";
+import { LoadingBar } from "react-redux-loading-bar";
 
 const Instructors = () => {
-  const [instructors] = useInstructors();
+  const [instructors, loading] = useInstructors();
   // console.log(instructors);
+  if (loading) {
+    return <LoadingBar></LoadingBar>;
+  }
   return (
     <div className="max-w-6xl  mx-auto pt-24">
       <Helmet>

@@ -109,7 +109,7 @@ const NavBar = () => {
 
           <li>
             <NavLink
-              to="/contact"
+              to="/contact-us"
               aria-label="contact"
               title="contact"
               className={({ isActive }) => (isActive ? "active" : "default")}

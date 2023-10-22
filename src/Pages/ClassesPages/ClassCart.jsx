@@ -58,7 +58,7 @@ const ClassCart = ({ classItem }) => {
     enrolledStudents,
     adminFeedback,
   } = classItem;
-  console.log(classItem.insEmail);
+
   const newData = {
     name,
     insName,

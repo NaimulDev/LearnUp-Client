@@ -22,7 +22,7 @@ const addresses = [
 
 const Contact = () => {
   return (
-    <section className="px-4 sm:px-8 md:px-16 lg:px-32 lg:py-32">
+    <section className="px-4 sm:px-8 md:px-16 lg:px-32 lg:py-32 text-white">
       <div className="flex flex-col lg:flex-row gap-4 ">
         <div className="lg:w-1/2">
           <div>
@@ -35,7 +35,7 @@ const Contact = () => {
               Get in Touch
             </h1>
             {/* Description */}
-            <p className="text-xs sm:text-xs lg:text-base my-5 text-slate-600">
+            <p className="text-xs sm:text-xs lg:text-base my-5 text-slate-400">
               Have an inquiry or some feedback for us? Fill out the form below
               to contact our team. For partnership and business development
               inquiries, please contact us at hello@ellen.com.

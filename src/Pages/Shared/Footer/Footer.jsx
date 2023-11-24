@@ -1,87 +1,81 @@
-// import React from "react";
-// import { BiStop,BiLocationPlus,BiPhoneCall } from "react-icons/Bi";
-// import { RiCellphoneFill } from "react-icons/Ri";
-// import {
-//   FaYoutube,
-//   FaInstagramSquare,
-// } from "react-icons/Fa";
-// import { AiFillLinkedin, AiFillFacebook,AiOutlineMail } from "react-icons/Ai";
+import Container from "../../../Components/Container";
+import AcademicInfo from "./AcademicInfo";
+import Facilities from "./Facilities";
+import QuickLinks from "./QuickLinks";
+import StudentCorner from "./StudentCorner";
+import We from "./We";
+
 const Footer = () => {
   return (
-    <footer className="footer p-10 bg-[#0e113d] text-white">
-      <div>
-        <h1 className="text-3xl font-bold font-mono">Ellen</h1>
-        <p className="font-serif">
-          Lorem ipsum dolor sit amet, consectetur, sed <br /> do eiusmod tempor
-          incididunt ut labore et dolore magna <br /> aliqua minim.
-        </p>
-        <div className="flex gap-3 text-3xl">
+    <>
+      {/* <footer className="footer p-10 bg-[#0e113d] text-white">
+      
+
+      </footer> */}
+      <section className="bg-[#0e113d] p-10 text-white">
+        {/* <Container> */}
+        <section className="bg-cover w-full  footer">
+          {/* Footer Top Section */}
+          {/* <section className="bg-[#0c1730] w-full footer-top lg:w-[836px] mx-auto">
+            <section className="py-[30px] px-12">
+              <section className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-3">
+                <div className="md:border-r border-[#ffffff1a] w-full md:w-1/3">
+                  <h4 className="text-[20px] font-[700] text-white text-center mb-1 md:mb-3">
+                    Call Us On :
+                  </h4>
+                  <h5 className="text-[18px] font-[700] text-primary text-center">
+                    +(880) 1800000131
+                  </h5>
+                </div>
+                <div className="md:border-r border-[#ffffff1a] w-full md:w-1/3">
+                  <h4 className="text-[20px] font-[700] text-white text-center mb-1 md:mb-3">
+                    Open Hours :
+                  </h4>
+                  <h5 className="text-[18px] font-[700] text-primary text-center">
+                    8.00 AM - 6.00 PM
+                  </h5>
+                </div>
+                <div className="w-full md:w-1/3">
+                  <h4 className="text-[20px] font-[700] text-white text-center mb-1 md:mb-3">
+                    Mail Us :
+                  </h4>
+                  <h5 className="text-[18px] font-[700] text-primary text-center">
+                    naimul@gmail.com
+                  </h5>
+                </div>
+              </section>
+            </section>
+          </section> */}
+          {/* Footer main section */}
+          <section className="mt-16">
+            <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[3fr_2fr_2fr_2fr_2fr] gap-5 md:gap-10">
+              <We />
+              <QuickLinks />
+              <StudentCorner />
+              <AcademicInfo />
+              <Facilities />
+            </section>
+          </section>
+        </section>
+        {/* </Container> */}
+      </section>
+      <section className="bg-secondary text-white py-5">
+        <p className="text-center text-[16px] leading-[30px] text-muted">
+          Copyrights © 2023 <span className="text-accent">LearnUP </span>.
+          Developed by
           <a
-            
-            className=" hover:text-blue-400 text-4xl  text-slate-300"
-            href="https://www.facebook.com/profile.php?id=100034116217598&mibextid=ZbWKwL"
+            href="https://nimul-portfolio.netlify.app/"
+            rel="noreferrer"
+            target="_blank"
+            className="text-accent"
           >
-            {/* <AiFillFacebook /> */}
-          </a>
-          <a
-         
-            href="https://www.linkedin.com/in/mohammasd-sarowar/"
-            className=" hover:text-blue-400 text-4xl  text-slate-300 "
-          >
-            {/* <AiFillLinkedin /> */}
-          </a>{" "}
-          <a className=" hover:text-blue-400 text-4xl  text-slate-300" href="#">
             {" "}
-            {/* <FaYoutube /> */}
+            Naimul Hasan
           </a>
-          <a href="#" className=" hover:text-blue-400 text-4xl  text-slate-300">
-            {/* <FaInstagramSquare /> */}
-          </a>{" "}
-        </div>
-      </div>
-      <div>
-        <span className="text-2xl font-sans font-bold ">About Us
-           <hr className="border-b-2 border-indigo-500 mt-2 "/>
-        </span>
-
-
-   
-        {/* <a className="link link-hover flex items-center font-serif"><BiStop className="text-blue-500 mr-1 text-lg"/> About Us</a>
-        <a className="link link-hover flex items-center font-serif"><BiStop className="text-blue-500 mr-1 text-lg"/>Instructor Registration</a>
-        <a className="link link-hover flex items-center font-serif"><BiStop className="text-blue-500 mr-1 text-lg"/> Instructors</a>
-        <a className="link link-hover flex items-center font-serif"><BiStop className="text-blue-500 mr-1 text-lg"/>Success Stories</a> */}
-      </div>
-      <div>
-        <span className="text-2xl font-sans font-bold ">Resources
-           <hr className="border-b-2 border-indigo-500 mt-2 "/>
-        </span>
-
-
-   
-        {/* <a className="link link-hover flex items-center font-serif"><BiStop className="text-blue-500 mr-1 text-lg"/> eLearning School</a>
-        <a className="link link-hover flex items-center font-serif"><BiStop className="text-blue-500 mr-1 text-lg"/>Courses</a>
-        <a className="link link-hover flex items-center font-serif"><BiStop className="text-blue-500 mr-1 text-lg"/>Terms & Conditions</a>
-        <a className="link link-hover flex items-center font-serif"><BiStop className="text-blue-500 mr-1 text-lg"/>Purchase Guide</a>
-        <a className="link link-hover flex items-center font-serif"><BiStop className="text-blue-500 mr-1 text-lg"/>Privacy Policy</a> */}
-      </div>
-      <div>
-        <span className="text-2xl font-sans font-bold ">Address
-           <hr className="border-b-2 border-indigo-500 mt-2 "/>
-        </span>
-
-
-   
-        {/* <a className="link link-hover flex items-center font-serif hover:text-blue-500"><BiLocationPlus className=" mr-1 text-lg"/> 122 road Dhaka Bangladesh</a>
-        <a className="link link-hover flex items-center font-serif hover:text-blue-500"><BiPhoneCall className=" mr-1 text-lg"/>+9660541502061</a>
-        <a className="link link-hover flex items-center font-serif hover:text-blue-500"><AiOutlineMail className=" mr-1 text-lg"/> abc@gmail.com</a>
-        <a className="link link-hover flex items-center font-serif hover:text-blue-500"><RiCellphoneFill className="  mr-1 text-lg"/>12345667</a> */}
-      </div>
-   
-
-
-    </footer>
+        </p>
+      </section>
+    </>
   );
 };
-
 
 export default Footer;

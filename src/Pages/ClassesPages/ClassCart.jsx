@@ -115,6 +115,36 @@ const ClassCart = ({ classItem }) => {
   // State to control the visibility of the hidden div
   const [isHiddenDivVisible, setIsHiddenDivVisible] = useState(false);
 
+  // Determine whether to apply left or right CSS classes based on available window width
+  // const isLeftMarginAvailable = window.screenLeft >= 277; // Adjust the value as needed
+  // console.log(isLeftMarginAvailable);
+
+  // const hiddenDivClasses = `absolute ${
+  //   isLeftMarginAvailable ? "-right-72" : "-left-72"
+  // } top-0 p-3 w-72 bg-white border border-gray-300 z-10 opacity-100`;
+
+  // const [isLeftMarginAvailable, setIsLeftMarginAvailable] = useState(true);
+
+  // useEffect(() => {
+  //   const checkLeftMargin = () => {
+  //     setIsLeftMarginAvailable(window.screenX == true);
+  //   };
+
+  //   window.addEventListener("resize", checkLeftMargin);
+
+  //   checkLeftMargin();
+
+  //   return () => {
+  //     window.removeEventListener("resize", checkLeftMargin);
+  //   };
+  // }, []);
+  // console.log(isLeftMarginAvailable);
+  const isLeftMarginAvailable = window.screenX == true;
+
+  const hiddenDivClasses = `absolute ${
+    isLeftMarginAvailable ? "-right-72" : "-left-72"
+  } top-0 p-3 w-72 bg-white border border-gray-300 z-10 opacity-100`;
+
   return (
     <div
       className={`w-72 mx-auto mb-8 relative ${cardClasses}`}
@@ -140,7 +170,7 @@ const ClassCart = ({ classItem }) => {
       </Link>
       {/* Hidden div that appears above the other cart layout on hover */}
       {isHiddenDivVisible && (
-        <div className="absolute -right-72 top-0 p-3 w-72 bg-white border border-gray-300 z-10 opacity-100">
+        <div className={hiddenDivClasses}>
           <h1 className="text-2xl font-bold">{courseTitle}</h1>
           <h6>{lastUpdated}</h6>
           <button

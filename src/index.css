@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/* @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap"); */
 /* .flex-container {
   display: flex;
   flex-wrap: wrap;
@@ -9,6 +9,42 @@
 .btn-primary {
   @apply rounded-3xl font-medium  transition duration-200  shadow-md  md:mb-0  px-4 py-2 md:px-4 md:py-2 m-2 text-sm  border-transparent border-2  text-white hover:bg-cyan-400 bg-primary;
 } */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* font-family: "Nunito sans"; */
+  scroll-behavior: smooth;
+}
+
+.font-Nunito {
+  font-family: "Nunito Sans";
+}
+
+.font-Themify {
+  font-family: "themify";
+}
+*::selection {
+  background-color: #0f172a;
+  color: white;
+}
+
+.section-link::before,
+.footer-link::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  margin: 0 12px 0 0px;
+  transform: rotate(45deg);
+  background: #08a9e6;
+  display: inline-block;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.section-link:hover::before,
+.footer-link:hover::before {
+  transform: rotate(180deg);
+}
 
 .container {
   @apply px-4 md:px-32;

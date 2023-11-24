@@ -34,10 +34,10 @@ const Banner = () => {
             <div className="form-control relative mb-4 md:mb-0">
               <input
                 type="text"
-                placeholder="Search for anything"
-                className="input w-full md:w-96 h-16 md:h-12 font-bold text-white bg-[#191919]"
+                placeholder="  Search for anything"
+                className="input w-full md:pl-9 md:w-96 h-16 md:h-12 font-bold text-white bg-[#191919]"
               />
-              <FaSearch className="absolute top-3 left-2 text-2xl text-blue-500" />
+              <FaSearch className="absolute top-4 left-4 text-sm text-blue-500" />
             </div>
             <button className="font-bold py-2 px-2 sm:px-2 md:px-6 bg-accent hover:bg-red">
               Search Course New

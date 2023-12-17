@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const token = localStorage.getItem("access-token");
 
-const ClassCart = ({ classItem }) => {
+const ClassCart = ({ classItem, index }) => {
   const [isSelectButtonDisabled, setIsSelectButtonDisabled] = useState(false);
   const { user, loading } = useContext(AuthContext);
   const email = user?.email;
@@ -39,6 +39,8 @@ const ClassCart = ({ classItem }) => {
 
   const instructor = currentUser?.role === "instructor";
   const admin = currentUser?.role === "admin";
+
+
 
   const {
     _id,
@@ -110,44 +112,41 @@ const ClassCart = ({ classItem }) => {
     }
   };
 
+  const specialIndices = [3, 7, 11, 15, 19, 23, 27, 31, 35];
+  // const generateSpecialIndices = (startIndex, dataLength, interval) => {
+  //   const indices = [];
+  //   for (let i = startIndex; i < dataLength; i += interval) {
+  //     indices.push(i);
+  //   }
+  //   return indices;
+  // };
+
+  // const startIndex = 3;
+  // const interval = 4;
+  // const specialIndices = classItem ? generateSpecialIndices(
+  //   startIndex,
+  //   classItem.length,
+  //   interval
+  // ):[];
+
+
+
+  const isSpecialIndex = specialIndices.includes(index);
+
   const cardClasses = admin || instructor || seats === 0 ? "bg-red-500" : "";
 
   // State to control the visibility of the hidden div
   const [isHiddenDivVisible, setIsHiddenDivVisible] = useState(false);
 
-  // Determine whether to apply left or right CSS classes based on available window width
-  // const isLeftMarginAvailable = window.screenLeft >= 277; // Adjust the value as needed
-  // console.log(isLeftMarginAvailable);
-
-  // const hiddenDivClasses = `absolute ${
-  //   isLeftMarginAvailable ? "-right-72" : "-left-72"
-  // } top-0 p-3 w-72 bg-white border border-gray-300 z-10 opacity-100`;
-
-  // const [isLeftMarginAvailable, setIsLeftMarginAvailable] = useState(true);
-
-  // useEffect(() => {
-  //   const checkLeftMargin = () => {
-  //     setIsLeftMarginAvailable(window.screenX == true);
-  //   };
-
-  //   window.addEventListener("resize", checkLeftMargin);
-
-  //   checkLeftMargin();
-
-  //   return () => {
-  //     window.removeEventListener("resize", checkLeftMargin);
-  //   };
-  // }, []);
-  // console.log(isLeftMarginAvailable);
-  const isLeftMarginAvailable = window.screenX == true;
+  const isLeftMarginAvailable = isSpecialIndex == true;
 
   const hiddenDivClasses = `absolute ${
-    isLeftMarginAvailable ? "-right-72" : "-left-72"
+    isLeftMarginAvailable ? "right-72" : "left-72"
   } top-0 p-3 w-72 bg-white border border-gray-300 z-10 opacity-100`;
 
   return (
     <div
-      className={`w-72 mx-auto mb-8 relative ${cardClasses}`}
+      className={`w-72 mx-auto mb-8 relative ${cardClasses} `}
       onMouseEnter={() => setIsHiddenDivVisible(true)}
       onMouseLeave={() => setIsHiddenDivVisible(false)}
     >

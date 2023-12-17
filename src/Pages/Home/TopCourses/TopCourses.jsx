@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import TopTitle from "../../../Components/TopTitle/TopTitle";
+import useCourses from "../../../hooks/useCourses";
 // import CourseCart from "./CourseCart";
 import ClassCart from "../../ClassesPages/ClassCart";
-const token = localStorage.getItem("access-token");
+
+// const token = localStorage.getItem("access-token");
 
 const TopCourses = () => {
   // const [courses, setCourses] = useState();
@@ -11,23 +13,24 @@ const TopCourses = () => {
   //     .then((res) => res.json())
   //     .then((data) => setCourses(data));
   // }, []);
-  const [classes, setClasses] = useState([]);
+  // const [classes, setClasses] = useState([]);
+  const { classes, loading } = useCourses();
 
-  useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/class`, {
-      headers: {
-        authorization: `bearer ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        const approvedClasses = data.filter(
-          (classItem) => classItem.status === "approved"
-        );
-        setClasses(approvedClasses);
-      });
-  }, []);
-  console.log(classes);
+  // useEffect(() => {
+  //   fetch(`${import.meta.env.VITE_API_URL}/class`, {
+  //     headers: {
+  //       authorization: `bearer ${token}`,
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       const approvedClasses = data.filter(
+  //         (classItem) => classItem.status === "approved"
+  //       );
+  //       setClasses(approvedClasses);
+  //     });
+  // }, []);
+  // console.log(classes);
 
   return (
     <>

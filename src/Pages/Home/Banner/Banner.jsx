@@ -3,8 +3,20 @@ import moon from "../../../assets/Banner/moon.png";
 import cover from "../../../assets/Banner/cover.png";
 import planet from "../../../assets/Banner/planet.png";
 import { FaSearch } from "react-icons/fa";
+import useCourses from "../../../hooks/useCourses";
+import { useState } from "react";
 
 const Banner = () => {
+  const { classes, loading } = useCourses();
+  const [searchQuery, setSearchQuery] = useState("");
+  // const [isSearchClicked, setIsSearchClicked] = useState(false);
+  const searchHandle = async () => {
+    // setIsSearchClicked(true);
+    const moviesMatchingSearch = classes.filter((course) =>
+      course?.courseTitle?.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredMovies(moviesMatchingSearch);
+  };
   return (
     <div className="relative md:pl-6 bg-[#0e113d] text-white h-[940px] md:h-[800px]">
       <img src={cover} alt="" className="pt-14 hidden md:block" />
@@ -36,8 +48,13 @@ const Banner = () => {
                 type="text"
                 placeholder="  Search for anything"
                 className="input w-full md:pl-9 md:w-96 h-16 md:h-12 font-bold text-white bg-[#191919]"
+                value={searchQuery}
+                onChange={(event) => setSearchQuery(event.target.value)}
               />
-              <FaSearch className="absolute top-4 left-4 text-sm text-blue-500" />
+              <FaSearch
+                onClick={searchHandle}
+                className="absolute top-4 left-4 text-sm text-blue-500"
+              />
             </div>
             <button className="font-bold py-2 px-2 sm:px-2 md:px-6 bg-accent hover:bg-red">
               Search Course New

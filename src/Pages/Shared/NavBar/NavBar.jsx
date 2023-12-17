@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 // import { CartContext } from "../App";
 // import { ShoppingCartIcon } from "@heroicons/react/24/solid";
@@ -7,12 +7,17 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 import { useAdmin, useInstractor } from "../../../hooks/useAdmin";
 import { LoadingBar } from "react-redux-loading-bar";
 import logo from "/LearnUP.png";
+import useCourses from "../../../hooks/useCourses";
+
 const NavBar = () => {
   // const [cart, setCart] = useContext(CartContext || []);
   const { user, logOut } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAdmin, isAdminLoading] = useAdmin();
   const [isIntractor] = useInstractor();
+  const { handleSearch, searchRef } = useCourses();
+
+  // const searchRef = useRef(null);
   const handleLogOut = () => {
     logOut()
       .then()
@@ -21,6 +26,12 @@ const NavBar = () => {
   if (isAdminLoading) {
     <LoadingBar />;
   }
+
+  // const handleSearch = () => {
+  //   console.log(searchRef.current.value);
+  //   setSearch(searchRef.current.value);
+  // };
+
   return (
     <div className="bg-black text-white px-4 py-5 mx-auto sm:max-w-xl md:max-w-full  md:px-24 lg:px-11">
       <div className="relative flex items-center justify-between">
@@ -44,10 +55,15 @@ const NavBar = () => {
         <div className="form-control relative hidden sm:block">
           <input
             type="text"
+            ref={searchRef}
+            // onChange={handleSearch}
             placeholder="Search for anything"
             className="input  w-24 h-11 md:w-auto font-bold text-white bg-[#191919]"
           />
-          <FaSearch className="absolute top-3 right-4 text-2xl text-blue-500 hover:text-red" />
+          <FaSearch
+            onClick={handleSearch}
+            className="absolute top-3 right-4 text-2xl text-blue-500 hover:text-red"
+          />
         </div>
 
         <ul className="items-center hidden space-x-8 lg:flex">
